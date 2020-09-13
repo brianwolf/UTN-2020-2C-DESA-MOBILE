@@ -1,0 +1,4 @@
+LOGGERS = {}
+
+DIRECTORIO_LOGS = 'logs'
+NIVEL_LOGS = 'INFO'

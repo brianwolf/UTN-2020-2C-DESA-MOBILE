@@ -1,0 +1,1 @@
+web: gunicorn -b 0.0.0.0:$PORT --reload --workers=1 --worker-connections=1000 app:app
