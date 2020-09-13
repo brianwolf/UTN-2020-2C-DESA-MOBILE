@@ -10,6 +10,6 @@ def variables():
     return jsonify(config.__dict__())
 
 
-@blue_print.route('/vivo')
+@blue_print.route('/')
 def vivo():
     return jsonify({"estado": "vivo"})
