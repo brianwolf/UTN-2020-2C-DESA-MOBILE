@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: anothrNick/github-tag-action@1.17.2
-        with:
+        env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           WITH_V: true
       - uses: AkhileshNS/heroku-deploy@v3.4.6
