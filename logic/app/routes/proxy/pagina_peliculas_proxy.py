@@ -7,13 +7,20 @@ blue_print = Blueprint('pagina_peliculas', __name__,
                        url_prefix='/proxy/v1/themoviedb')
 
 
-@blue_print.route('/<path:path>')
+@blue_print.route('/<path:path>', methods=['GET'])
 def proxy(path):
 
     host = config.PAG_PELICULAS_URL
-    sufijo_api_key = f'?api_key={config.PAG_PELICULAS_API_KEY}'
 
-    url_final = f'{host}{path}{sufijo_api_key}'
+    query_param_api_key = f'api_key={config.PAG_PELICULAS_API_KEY}'
+    query_param_idioma = f'language={config.PAG_PELICULAS_IDIOMA}'
+
+    url_final = f'{host}{path}?{query_param_api_key}&{query_param_idioma}'
     log().info(f'URL a redireccionar -> {url_final}')
 
-    return get(url_final).content
+    respuesta = get(url_final)
+    try:
+        return jsonify(respuesta.json())
+
+    except Exception as e:
+        return respuesta.content
