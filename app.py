@@ -2,7 +2,7 @@ from os import path
 
 from flask import Flask
 
-from logic.app.configs import config
+from logic.app.configs import config, directorios_config
 from logic.libs.logger import logger
 from logic.libs.rest import rest
 
@@ -13,6 +13,7 @@ logger.iniciar(directorio_logs, nivel_logs)
 app = Flask(__name__)
 rest.iniciar(app, 'logic/app/routes')
 
+directorios_config.iniciar_directorios()
 
 if __name__ == "__main__":
     flask_host = config.PYTHON_HOST

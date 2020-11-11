@@ -68,13 +68,82 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "app",
+			"name": "api",
 			"item": [
 				{
 					"name": "v1",
-					"item": [],
+					"item": [
+						{
+							"name": "qr",
+							"item": [
+								{
+									"name": "generar qr",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "descargar qr",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr/060d54c1-d63d-46e0-a6c6-46f628295a0e",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr",
+												"060d54c1-d63d-46e0-a6c6-46f628295a0e"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "163ec4b3-f14f-4fd1-9405-640fe23cfa87",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb2f2d11-8bff-4372-b3b4-5423ef6b6a1a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -194,7 +263,7 @@
 	],
 	"variable": [
 		{
-			"id": "a700cfdb-2f90-42f5-92f0-056f8310415c",
+			"id": "bfb00faa-8407-49f8-bc1b-b3a27aa4c55c",
 			"key": "url",
 			"value": "http://localhost:5000"
 		}
