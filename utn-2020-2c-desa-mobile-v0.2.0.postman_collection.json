@@ -157,6 +157,129 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "user",
+							"item": [
+								{
+									"name": "crear usuario",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"login\": {\n        \"user\": \"pepe\",\n        \"password\": \"1234\"\n    },\n    \"creditCars\": [\n        {\n            \"number\": \"1234-1234-1234-1234\",\n            \"name\": \"Jose\",\n            \"expiration\": \"01/2025\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "todos los usuarios",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar usuario",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/4751e814-c0b1-43cf-a1c5-680a75c05ea0",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"4751e814-c0b1-43cf-a1c5-680a75c05ea0"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "borrar usuario",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/4751e814-c0b1-43cf-a1c5-680a75c05ea0",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"4751e814-c0b1-43cf-a1c5-680a75c05ea0"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "loguearse",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user\": \"pepe\",\n    \"password\": \"1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/users/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -302,7 +425,7 @@
 	],
 	"variable": [
 		{
-			"id": "b06bdfc1-1991-42e8-a9e5-b3d1a71b0418",
+			"id": "0b0aa4d3-a4ed-4c36-8e9a-d10e99adc692",
 			"key": "url",
 			"value": "http://localhost:5000"
 		}
