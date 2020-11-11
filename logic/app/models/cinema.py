@@ -46,7 +46,7 @@ class Timetable(object):
 
     def to_json(self) -> dict:
         return {
-            'movie_time': self.movie_time,
+            'movie_time': self.movie_time.isoformat(),
             'places': [o.to_json() for o in self.places]
         }
 
@@ -58,7 +58,7 @@ class Timetable(object):
 
         return Timetable(
             movie_time=movie_time,
-            timetables=[Place.from_json(d) for d in d.get('timetables')]
+            places=[Place.from_json(d) for d in d.get('places')]
         )
 
 

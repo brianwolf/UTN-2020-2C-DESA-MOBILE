@@ -78,7 +78,7 @@ def _cargar_db():
 
     if not os.path.exists(_DIRECOTRIO_JSON):
         with open(_DIRECOTRIO_JSON, 'w+') as db:
-            db.write('[]')
+            db.write(json.dumps([c.to_json() for c in _cinemas_hard()]))
 
     with open(_DIRECOTRIO_JSON, 'rb+') as db:
         _DB = [Cinema.from_json(d) for d in json.load(db)]
