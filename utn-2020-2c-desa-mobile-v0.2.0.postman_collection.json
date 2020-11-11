@@ -96,6 +96,25 @@
 									"response": []
 								},
 								{
+									"name": "todos los qrs",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "descargar qr",
 									"request": {
 										"method": "GET",
@@ -110,6 +129,26 @@
 												"v1",
 												"qr",
 												"060d54c1-d63d-46e0-a6c6-46f628295a0e"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "borrar qr si existe",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr/cdbaa050-1563-4f4a-89eb-8b3f108036af",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr",
+												"cdbaa050-1563-4f4a-89eb-8b3f108036af"
 											]
 										}
 									},
@@ -263,7 +302,7 @@
 	],
 	"variable": [
 		{
-			"id": "bfb00faa-8407-49f8-bc1b-b3a27aa4c55c",
+			"id": "b06bdfc1-1991-42e8-a9e5-b3d1a71b0418",
 			"key": "url",
 			"value": "http://localhost:5000"
 		}

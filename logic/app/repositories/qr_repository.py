@@ -47,9 +47,32 @@ def buscar_qr(id: uuid4) -> Qr:
     """
     busca un qr en la base de datos
     """
-    _cargar_db()
     for qr in _DB:
         if qr.id == id:
             return qr
 
     return None
+
+
+def todos_los_qr() -> List[Qr]:
+    """
+    busca todos los qr
+    """
+    return _DB
+
+
+def borrar_qr(id: uuid4) -> Qr:
+    """
+    borra el qr si existe
+    """
+    qr = buscar_qr(id)
+    if qr is None:
+        return
+
+    _DB.remove(qr)
+    _actualizar_db()
+
+    return qr
+
+
+_cargar_db()

@@ -15,7 +15,7 @@ def crear_qr():
 
 
 @blue_print.route('/<id>', methods=['GET'])
-def buscar_qr(id: uuid4):
+def buscar_qr(id: str):
 
     qr = qr_service.buscar_qr(UUID(id))
     if qr is None:
@@ -25,3 +25,20 @@ def buscar_qr(id: uuid4):
                      mimetype='image/jpeg',
                      as_attachment=True,
                      attachment_filename=str(qr.id))
+
+
+@blue_print.route('/', methods=['GET'])
+def todos_los_qr():
+
+    qrs = qr_service.todos_los_qr()
+    return jsonify([qr.to_json() for qr in qrs]), 200
+
+
+@blue_print.route('/<id>', methods=['DELETE'])
+def borrar_qr(id: str):
+
+    qr = qr_service.borrar_qr(UUID(id))
+    if qr is None:
+        return '', 204
+
+    return '', 200
