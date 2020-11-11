@@ -11,3 +11,5 @@ PAG_PELICULAS_IDIOMA = "es-MX"
 
 DIRECTORIO_QR = "produce/qr"
 DIRECTORIO_DB = "produce/db"
+
+DIRECTORIO_IMG_CINEMA = "consume/img"
