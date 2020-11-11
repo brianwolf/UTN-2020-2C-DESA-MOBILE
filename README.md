@@ -21,3 +21,9 @@ Documentacion de la API [aca](https://developers.themoviedb.org/3/getting-starte
 [https://utn-2020-2c-desa-mobile.herokuapp.com/proxy/v1/themoviedb/movie/550](https://utn-2020-2c-desa-mobile.herokuapp.com/proxy/v1/themoviedb/movie/550)
 
 Todo lo que halla luego de **/proxy/v1/themoviedb** es lo que se envia a la API agregandole un query param para la *apikey* y otra para el idioma
+
+---
+
+## Generacion de QR
+
+qr "Some text" > test.png
