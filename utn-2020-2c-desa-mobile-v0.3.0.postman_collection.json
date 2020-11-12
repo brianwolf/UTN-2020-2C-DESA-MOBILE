@@ -26,6 +26,23 @@
 					"response": []
 				},
 				{
+					"name": "postman",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/postman",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"postman"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "variables",
 					"request": {
 						"method": "GET",
@@ -813,17 +830,17 @@
 	],
 	"variable": [
 		{
-			"id": "f7a4d835-4c7e-4cb4-af70-0d8051985113",
+			"id": "c0f55ee0-ef22-4cb9-9dd6-0930f03322cc",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "838b2770-d41f-4e45-8378-79dce69f12e6",
+			"id": "b6b58035-9ac4-4bf8-975d-533e51bf16bd",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "30d4ff8d-0149-486f-b840-74ec8b4d7e2d",
+			"id": "6079a658-3960-4108-845b-d560f3cd4a08",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		}

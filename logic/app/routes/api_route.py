@@ -1,4 +1,8 @@
-from flask import Blueprint, jsonify, render_template
+import ntpath
+from io import BytesIO
+from os import listdir, getcwd
+
+from flask import Blueprint, jsonify, render_template, send_file
 from logic.app.configs import config, directorios_config
 from logic.app.repositories import (cinema_repository, discount_repository,
                                     qr_repository, user_repository)
@@ -32,3 +36,21 @@ def borrar_directorios_generados():
     user_repository._cargar_db()
 
     return '', 200
+
+
+@blue_print.route('/postman', methods=['GET'])
+def descargar_coleccion_de_postman():
+
+    archivo_dir = next(iter([
+        f
+        for f in listdir(getcwd())
+        if str(f).endswith('.postman_collection.json')
+    ]), None)
+
+    if not archivo_dir:
+        return '', 204
+
+    return send_file(BytesIO(open(archivo_dir, 'rb').read()),
+                     mimetype='application/octet-stream',
+                     as_attachment=True,
+                     attachment_filename=ntpath.basename(archivo_dir))
