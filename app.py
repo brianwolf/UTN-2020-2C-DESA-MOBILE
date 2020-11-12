@@ -2,9 +2,11 @@ from os import path
 
 from flask import Flask
 
-from logic.app.configs import config
+from logic.app.configs import config, directorios_config
 from logic.libs.logger import logger
 from logic.libs.rest import rest
+
+directorios_config.iniciar_directorios()
 
 directorio_logs = config.DIRECTORIO_LOGS
 nivel_logs = config.NIVEL_LOGS

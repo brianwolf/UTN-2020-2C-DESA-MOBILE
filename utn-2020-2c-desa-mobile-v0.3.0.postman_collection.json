@@ -1,0 +1,849 @@
+{
+	"info": {
+		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
+		"name": "utn-2020-2c-desa-mobile-v0.3.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "config",
+			"item": [
+				{
+					"name": "vivo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postman",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/postman",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"postman"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/variables",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"variables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variables Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/db/reiniciar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"db",
+								"reiniciar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f63dc4dd-c614-495e-b1a7-cf6b1d6b18e0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfb58b1e-f17c-45db-ac0d-932ddd814877",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "qr",
+							"item": [
+								{
+									"name": "todos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "descargar",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/qr/6b3d81ab-de59-4d3e-8fca-a279b4aca351",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"qr",
+												"6b3d81ab-de59-4d3e-8fca-a279b4aca351"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "users",
+							"item": [
+								{
+									"name": "crear",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"login\": {\n        \"user\": \"pepe\",\n        \"password\": \"1234\"\n    },\n    \"creditCars\": [\n        {\n            \"number\": \"1234-1234-1234-1234\",\n            \"name\": \"Jose\",\n            \"expiration\": \"01/2025\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "todos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/7ae93387-b2fe-4d3c-9d09-79dc5470beb9",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"7ae93387-b2fe-4d3c-9d09-79dc5470beb9"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "borrar",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/c60000e3-58a4-409d-aaab-95f988dc5afc",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"c60000e3-58a4-409d-aaab-95f988dc5afc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "loguearse",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"pm.collectionVariables.set(\"token\", jsonData.token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/users/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "todos los logueados",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d21fad1e-2f08-4263-9d7a-e4ca9d6375f8",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "9a03ddd8-5b86-4a73-a817-725d96945c08",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "discounts",
+							"item": [
+								{
+									"name": "todos",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "80201e2f-1bed-4d00-b925-56705c0be125",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"pm.collectionVariables.set(\"id_descuento_ejemplo\", jsonData[0].id);",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/discounts",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "por token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2c08c559-208d-43c3-8509-8be68da422ca",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/discounts/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "asignar por token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a259280f-ab22-43e5-8237-6df833434d58",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"{{id_descuento_ejemplo}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/discounts/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16925fd3-e790-4ddb-b8e1-e614d3a8ff92",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "828736ee-aaae-476f-af24-8558691d744c",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "cinema",
+							"item": [
+								{
+									"name": "todos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "todos con todos los campos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/full",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"full"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "los mas cercanos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/closest?latitude=-34.6160666&longitude=-58.4216017",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"closest"
+											],
+											"query": [
+												{
+													"key": "latitude",
+													"value": "-34.6160666"
+												},
+												{
+													"key": "longitude",
+													"value": "-58.4216017"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"17a90ac3-2318-4943-a340-a33a17e2d2ca"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar con todos los campos",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/full",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"full"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar imagen",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca/img",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"17a90ac3-2318-4943-a340-a33a17e2d2ca",
+												"img"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "horarios",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"timetables"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "butacas",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables/15:00:00/places",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"timetables",
+												"15:00:00",
+												"places"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "butacas disponibles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables/15:00:00/places/enables",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"timetables",
+												"15:00:00",
+												"places",
+												"enables"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "163ec4b3-f14f-4fd1-9405-640fe23cfa87",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb2f2d11-8bff-4372-b3b4-5423ef6b6a1a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "proxy",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "imagetmdb",
+							"item": [
+								{
+									"name": "descargar imagen",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/proxy/v1/imagetmdb/m9cn5mhW519QKr1YGpGxNWi98VJ.jpg",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"proxy",
+												"v1",
+												"imagetmdb",
+												"m9cn5mhW519QKr1YGpGxNWi98VJ.jpg"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "766644ef-e72b-438c-8dc4-6ab7f54d1d52",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "340f99e2-7544-4ef6-a652-477fbf2d2096",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "themoviedb",
+							"item": [
+								{
+									"name": "themoviedb",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/proxy/v1/themoviedb/movie/popular",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"proxy",
+												"v1",
+												"themoviedb",
+												"movie",
+												"popular"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cfbe87d3-3634-4cda-bb70-dae4a4a57375",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e9463f72-9feb-4945-b34f-12b85e223783",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c0f55ee0-ef22-4cb9-9dd6-0930f03322cc",
+			"key": "url",
+			"value": "http://localhost:5000"
+		},
+		{
+			"id": "b6b58035-9ac4-4bf8-975d-533e51bf16bd",
+			"key": "token",
+			"value": ""
+		},
+		{
+			"id": "6079a658-3960-4108-845b-d560f3cd4a08",
+			"key": "id_descuento_ejemplo",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
