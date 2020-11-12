@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
-		"name": "utn-2020-2c-desa-mobile-v0.1.0",
+		"name": "utn-2020-2c-desa-mobile-v0.3.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -37,6 +37,24 @@
 							],
 							"path": [
 								"variables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variables Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/db/reiniciar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"db",
+								"reiniciar"
 							]
 						}
 					},
@@ -77,25 +95,6 @@
 							"name": "qr",
 							"item": [
 								{
-									"name": "crear",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"url": {
-											"raw": "{{url}}/api/v1/qr",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"qr"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "todos",
 									"request": {
 										"method": "GET",
@@ -120,7 +119,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/qr/060d54c1-d63d-46e0-a6c6-46f628295a0e",
+											"raw": "{{url}}/api/v1/qr/6b3d81ab-de59-4d3e-8fca-a279b4aca351",
 											"host": [
 												"{{url}}"
 											],
@@ -128,27 +127,7 @@
 												"api",
 												"v1",
 												"qr",
-												"060d54c1-d63d-46e0-a6c6-46f628295a0e"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "borrar",
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{url}}/api/v1/qr/cdbaa050-1563-4f4a-89eb-8b3f108036af",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"qr",
-												"cdbaa050-1563-4f4a-89eb-8b3f108036af"
+												"6b3d81ab-de59-4d3e-8fca-a279b4aca351"
 											]
 										}
 									},
@@ -159,7 +138,7 @@
 							"_postman_isSubFolder": true
 						},
 						{
-							"name": "user",
+							"name": "users",
 							"item": [
 								{
 									"name": "crear",
@@ -214,7 +193,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/users/4751e814-c0b1-43cf-a1c5-680a75c05ea0",
+											"raw": "{{url}}/api/v1/users/7ae93387-b2fe-4d3c-9d09-79dc5470beb9",
 											"host": [
 												"{{url}}"
 											],
@@ -222,7 +201,7 @@
 												"api",
 												"v1",
 												"users",
-												"4751e814-c0b1-43cf-a1c5-680a75c05ea0"
+												"7ae93387-b2fe-4d3c-9d09-79dc5470beb9"
 											]
 										}
 									},
@@ -234,7 +213,7 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/users/4751e814-c0b1-43cf-a1c5-680a75c05ea0",
+											"raw": "{{url}}/api/v1/users/c60000e3-58a4-409d-aaab-95f988dc5afc",
 											"host": [
 												"{{url}}"
 											],
@@ -242,7 +221,7 @@
 												"api",
 												"v1",
 												"users",
-												"4751e814-c0b1-43cf-a1c5-680a75c05ea0"
+												"c60000e3-58a4-409d-aaab-95f988dc5afc"
 											]
 										}
 									},
@@ -250,12 +229,25 @@
 								},
 								{
 									"name": "loguearse",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"pm.collectionVariables.set(\"token\", jsonData.token);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"user\": \"pepe\",\n    \"password\": \"1234\"\n}",
+											"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -276,6 +268,196 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "todos los logueados",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/users/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d21fad1e-2f08-4263-9d7a-e4ca9d6375f8",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "9a03ddd8-5b86-4a73-a817-725d96945c08",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "discounts",
+							"item": [
+								{
+									"name": "todos",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "80201e2f-1bed-4d00-b925-56705c0be125",
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"pm.collectionVariables.set(\"id_descuento_ejemplo\", jsonData[0].id);",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/discounts",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "por token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2c08c559-208d-43c3-8509-8be68da422ca",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/discounts/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "asignar por token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a259280f-ab22-43e5-8237-6df833434d58",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"{{id_descuento_ejemplo}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/discounts/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"discounts",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16925fd3-e790-4ddb-b8e1-e614d3a8ff92",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "828736ee-aaae-476f-af24-8558691d744c",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -324,12 +506,12 @@
 									"response": []
 								},
 								{
-									"name": "buscar",
+									"name": "los mas cercanos",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0",
+											"raw": "{{url}}/api/v1/cinemas/closest?latitude=-34.6160666&longitude=-58.4216017",
 											"host": [
 												"{{url}}"
 											],
@@ -337,7 +519,37 @@
 												"api",
 												"v1",
 												"cinemas",
-												"f27db908-db46-436c-bae8-3ce0256bfdd0"
+												"closest"
+											],
+											"query": [
+												{
+													"key": "latitude",
+													"value": "-34.6160666"
+												},
+												{
+													"key": "longitude",
+													"value": "-58.4216017"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "buscar",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"17a90ac3-2318-4943-a340-a33a17e2d2ca"
 											]
 										}
 									},
@@ -370,7 +582,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/img",
+											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca/img",
 											"host": [
 												"{{url}}"
 											],
@@ -378,7 +590,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"17a90ac3-2318-4943-a340-a33a17e2d2ca",
 												"img"
 											]
 										}
@@ -601,9 +813,19 @@
 	],
 	"variable": [
 		{
-			"id": "db5c887b-46e9-4325-a321-fa247ae8bb32",
+			"id": "f7a4d835-4c7e-4cb4-af70-0d8051985113",
 			"key": "url",
 			"value": "http://localhost:5000"
+		},
+		{
+			"id": "838b2770-d41f-4e45-8378-79dce69f12e6",
+			"key": "token",
+			"value": ""
+		},
+		{
+			"id": "30d4ff8d-0149-486f-b840-74ec8b4d7e2d",
+			"key": "id_descuento_ejemplo",
+			"value": ""
 		}
 	],
 	"protocolProfileBehavior": {}

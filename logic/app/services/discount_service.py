@@ -43,7 +43,7 @@ def agregar_discount_a_user(user: User, discount_user: DiscountUser):
     discount = buscar_discount(discount_user.id)
     if not discount:
         msj = f'El descuento con id {discount_user.id} no fue encontrado'
-        raise AppException(DiscountErrors.DESCUENTO_TO_ENCONTRADO, mensaje=msj)
+        raise AppException(DiscountErrors.DESCUENTO_NO_ENCONTRADO, mensaje=msj)
 
     user.discounts.append(discount_user)
     user_service.guardar_user(user)

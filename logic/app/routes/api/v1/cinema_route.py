@@ -3,7 +3,7 @@ from io import BytesIO
 from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
-from logic.app.models.cinema import Place
+from logic.app.models.cinema import Location, Place
 from logic.app.services import cinema_service
 
 blue_print = Blueprint('cinemas', __name__, url_prefix='/api/v1/cinemas')
@@ -24,11 +24,16 @@ def buscar_cinema(id: str):
     return jsonify(json_cinema), 200
 
 
-@blue_print.route('/', methods=['GET'])
-def todos_los_cinema():
+@blue_print.route('/closest', methods=['GET'])
+def todos_los_cinema_mas_cercano():
+
+    longitude = float(request.args.get('longitude'))
+    latitude = float(request.args.get('latitude'))
+
+    location = Location(longitude=longitude, latitude=latitude)
 
     json_cinemas = []
-    for c in cinema_service.todos_los_cinema():
+    for c in cinema_service.todos_los_cinema_mas_cercano(location):
 
         j = c.to_json()
         j.pop('location')
