@@ -13,7 +13,7 @@ class Login(object):
         return self.user == other.user and self.password == other.password
 
     def to_json(self) -> dict:
-        return self.__dict__
+        return self.__dict__.copy()
 
     @staticmethod
     def from_json(d: dict) -> 'Login':
@@ -30,7 +30,7 @@ class CreditCard(object):
         return self.number == other.number
 
     def to_json(self) -> dict:
-        return self.__dict__
+        return self.__dict__.copy()
 
     @staticmethod
     def from_json(d: dict) -> 'CreditCard':
@@ -46,7 +46,7 @@ class DiscountUser(object):
         return self.id == other.id
 
     def to_json(self) -> dict:
-        return self.__dict__
+        return self.__dict__.copy()
 
     @staticmethod
     def from_json(d: dict) -> 'DiscountUser':
@@ -90,7 +90,7 @@ class User(object):
             d.get('last_conection')) if 'last_conection' in d else datetime.now()
 
         return User(
-            login=Login.from_json(d['login']),
+            login=Login.from_json(d.get('login', {})),
             id=id,
             last_conection=last_conection,
             creditCars=[CreditCard.from_json(j)

@@ -13,7 +13,7 @@ class Location(object):
         return self.latitude == other.latitude and self.longitude == other.longitude
 
     def to_json(self) -> dict:
-        return self.__dict__
+        return self.__dict__.copy()
 
     @staticmethod
     def from_json(d: dict) -> 'Location':
@@ -29,7 +29,7 @@ class Place(object):
         return self.name == other.name
 
     def to_json(self) -> dict:
-        return self.__dict__
+        return self.__dict__.copy()
 
     @staticmethod
     def from_json(d: dict) -> 'Place':

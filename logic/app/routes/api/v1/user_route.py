@@ -3,6 +3,7 @@ from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
 from logic.app.models.user import Login, User
+from logic.app.routes.api.v1.mappers import user_mapper
 from logic.app.services import user_service
 
 blue_print = Blueprint('users', __name__, url_prefix='/api/v1/users')
@@ -16,6 +17,16 @@ def loguearse():
         return '', 204
 
     return jsonify(token=token), 200
+
+
+@blue_print.route('/login', methods=['GET'])
+def todos_los_users_logueados():
+
+    users = user_service.todos_los_user_logueados()
+    if users is None:
+        return '', 204
+
+    return jsonify([user_mapper.user_to_json(o) for o in users]), 200
 
 
 @blue_print.route('/', methods=['POST'])
@@ -32,14 +43,14 @@ def buscar_user(id: str):
     if user is None:
         return '', 204
 
-    return jsonify(user.to_json()), 200
+    return jsonify(user_mapper.user_to_json(user)), 200
 
 
 @blue_print.route('/', methods=['GET'])
 def todos_los_user():
 
     users = user_service.todos_los_user()
-    return jsonify([user.to_json() for user in users]), 200
+    return jsonify([user_mapper.user_to_json(o) for o in users]), 200
 
 
 @blue_print.route('/<id>', methods=['DELETE'])

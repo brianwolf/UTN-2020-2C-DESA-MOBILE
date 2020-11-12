@@ -35,11 +35,11 @@ def _borrar_logueos_viejos():
 
     hoy = datetime.now()
 
-    _LOGIN = [
-        {k: v}
+    _LOGIN = {
+        k: v
         for k, v in _LOGIN.items()
         if hoy.month == v.last_conection.month and (hoy.day - v.last_conection.day) == 0
-    ]
+    }
 
 
 def login_user(login: Login) -> UUID:
@@ -48,12 +48,13 @@ def login_user(login: Login) -> UUID:
 
     _borrar_logueos_viejos()
 
-    token = next([k for k, v in _LOGIN.items() if v.login == login])
+    token = next(
+        iter([k for k, v in _LOGIN.items() if v.login == login]), None)
     if token:
         _LOGIN.get(token).last_conection = datetime.now()
         return token
 
-    user = next([u for u in _DB if u.login == login])
+    user = next(iter([u for u in _DB if u.login == login]), None)
     if not user:
         return None
 
@@ -105,6 +106,10 @@ def buscar_user_logueado(token: UUID) -> User:
 
     login_user(user.login)
     return user
+
+
+def todos_los_user_logueados() -> List[User]:
+    return _LOGIN.values()
 
 
 _cargar_db()

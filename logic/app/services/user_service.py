@@ -9,6 +9,11 @@ from logic.app.repositories import user_repository
 def login_user(login: Login) -> UUID:
     return user_repository.login_user(login)
 
+
+def todos_los_user_logueados() -> List[User]:
+    return user_repository.todos_los_user_logueados()
+
+
 def buscar_user_logueado(token: UUID):
     return user_repository.buscar_user_logueado(token)
 
