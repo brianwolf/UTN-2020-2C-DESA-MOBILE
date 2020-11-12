@@ -103,3 +103,7 @@ class Cinema(object):
             timetables=[Timetable.from_json(d) for d in d.get('timetables')],
             id=id
         )
+
+    def cargar_contenido(self) -> bytes:
+        with open(self.image_path, 'rb') as archivo:
+            return archivo.read()
