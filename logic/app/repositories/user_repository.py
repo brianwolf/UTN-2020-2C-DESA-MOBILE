@@ -5,7 +5,7 @@ from typing import Dict, List
 from uuid import UUID, uuid4
 
 from logic.app.configs import config
-from logic.app.models.user import Login, User
+from logic.app.models.user import Login, User, CreditCard
 
 _DIRECOTRIO_JSON: str = f'{config.DIRECTORIO_DB}/user.json'
 _DB: List[User] = []
@@ -13,12 +13,27 @@ _DB: List[User] = []
 _LOGIN: Dict[UUID, User] = {}
 
 
+def _users_hard() -> List[User]:
+    return [
+        User(
+            login=Login(user='admin', password='admin'),
+            creditCars=[
+                CreditCard(
+                    number='1234-1234-1234-1234',
+                    name='Jose',
+                    expiration='02/2025'
+                )
+            ]
+        )
+    ]
+
+
 def _cargar_db():
     global _DB
 
     if not os.path.exists(_DIRECOTRIO_JSON):
         with open(_DIRECOTRIO_JSON, 'w+') as db:
-            db.write('[]')
+            db.write(json.dumps([o.to_json() for o in _users_hard()]))
 
     with open(_DIRECOTRIO_JSON, 'rb+') as db:
         _DB = [User.from_json(d) for d in json.load(db)]

@@ -11,7 +11,7 @@ class Discount(object):
     qr: Qr
     discount_price: float = None
     discount_percent: float = None
-    id: UUID = uuid4()
+    id: UUID = field(default_factory=uuid4)
 
     def __eq__(self, other):
         return self.id == other.id
@@ -25,7 +25,7 @@ class Discount(object):
             'id': str(self.id)
         }
 
-    @staticmethod
+    @ staticmethod
     def from_json(d: dict) -> 'Discount':
 
         id = UUID(str(d.get('id'))) if 'id' in d else uuid4()

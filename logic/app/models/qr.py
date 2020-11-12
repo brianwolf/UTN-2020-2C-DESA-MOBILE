@@ -1,12 +1,12 @@
 from dataclasses import dataclass
-from uuid import uuid4, UUID
+from uuid import UUID, uuid4
 
 from logic.app.configs import config
 
 
 @dataclass
 class Qr(object):
-    id: uuid4
+    id: UUID
     imagen_ruta: str
 
     def __init__(self, id=None, imagen_ruta=''):

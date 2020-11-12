@@ -39,23 +39,26 @@ class CreditCard(object):
 
 @dataclass
 class DiscountUser(object):
-    id: UUID = uuid4()
+    id: UUID = field(default_factory=uuid4)
     date_scanned: datetime = datetime.now()
 
     def __eq__(self, other):
         return self.id == other.id
 
     def to_json(self) -> dict:
-        return self.__dict__.copy()
+        return {
+            'id': str(self.id),
+            'date_scanned': self.date_scanned.isoformat()
+        }
 
     @staticmethod
     def from_json(d: dict) -> 'DiscountUser':
         id = UUID(str(d.get('id'))) if 'id' in d else uuid4()
 
         date_scanned = datetime.fromisoformat(
-            d.get('date_scanned')) if 'date_scanned' in d else datetime.now()
+            d.get('date_scanned')) if d.get('date_scanned') else datetime.now()
 
-        return User(
+        return DiscountUser(
             id=id,
             date_scanned=date_scanned
         )

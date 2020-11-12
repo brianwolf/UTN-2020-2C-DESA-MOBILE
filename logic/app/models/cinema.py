@@ -71,7 +71,7 @@ class Cinema(object):
     location: Location
     image_path: str
     timetables: List[Timetable]
-    id: UUID = uuid4()
+    id: UUID = field(default_factory=uuid4)
 
     def __eq__(self, other):
         return self.id == other.id
