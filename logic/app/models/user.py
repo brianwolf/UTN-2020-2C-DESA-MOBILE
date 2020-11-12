@@ -38,10 +38,35 @@ class CreditCard(object):
 
 
 @dataclass
+class DiscountUser(object):
+    id: UUID = uuid4()
+    date_scanned: datetime = datetime.now()
+
+    def __eq__(self, other):
+        return self.id == other.id
+
+    def to_json(self) -> dict:
+        return self.__dict__
+
+    @staticmethod
+    def from_json(d: dict) -> 'DiscountUser':
+        id = UUID(str(d.get('id'))) if 'id' in d else uuid4()
+
+        date_scanned = datetime.fromisoformat(
+            d.get('date_scanned')) if 'date_scanned' in d else datetime.now()
+
+        return User(
+            id=id,
+            date_scanned=date_scanned
+        )
+
+
+@dataclass
 class User(object):
     login: Login
     creditCars: List[CreditCard] = field(default_factory=list)
     last_conection: datetime = datetime.now()
+    discounts: List[DiscountUser] = field(default_factory=list)
     id: UUID = uuid4()
 
     def __eq__(self, other):
@@ -51,7 +76,8 @@ class User(object):
         return {
             'id': str(self.id),
             'last_conection': self.last_conection.isoformat(),
-            'creditCars': [cc.to_json() for cc in self.creditCars],
+            'creditCars': [o.to_json() for o in self.creditCars],
+            'discounts': [o.to_json() for o in self.discounts],
             'login': self.login.to_json()
         }
 
@@ -67,5 +93,8 @@ class User(object):
             login=Login.from_json(d['login']),
             id=id,
             last_conection=last_conection,
-            creditCars=[CreditCard.from_json(cc) for cc in d['creditCars']]
+            creditCars=[CreditCard.from_json(j)
+                        for j in d.get('creditCars', [])],
+            discounts=[DiscountUser.from_json(j)
+                       for j in d.get('discounts', [])]
         )

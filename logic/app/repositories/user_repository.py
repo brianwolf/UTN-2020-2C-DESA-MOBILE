@@ -29,38 +29,40 @@ def _actualizar_db():
         json.dump([o.to_json() for o in _DB], db)
 
 
-def _actualizar_logins():
+def _borrar_logueos_viejos():
 
     global _LOGIN
 
-    nuevo_diccionario = {}
     hoy = datetime.now()
 
-    for k, v in _LOGIN.items():
-
-        if hoy.month == v.last_conection.month and (hoy.day - v.last_conection.day) >= 1:
-            continue
-
-        nuevo_diccionario[k] = v
-
-    _LOGIN = nuevo_diccionario
+    _LOGIN = [
+        {k: v}
+        for k, v in _LOGIN.items()
+        if hoy.month == v.last_conection.month and (hoy.day - v.last_conection.day) == 0
+    ]
 
 
 def login_user(login: Login) -> UUID:
 
-    _actualizar_logins()
+    global _LOGIN
 
-    for user in _DB:
-        if user.login == login:
+    _borrar_logueos_viejos()
 
-            token = uuid4()
-            user.last_conection = datetime.now()
+    token = next([k for k, v in _LOGIN.items() if v.login == login])
+    if token:
+        _LOGIN.get(token).last_conection = datetime.now()
+        return token
 
-            _LOGIN[token] = user
+    user = next([u for u in _DB if u.login == login])
+    if not user:
+        return None
 
-            return token
+    token = uuid4()
+    user.last_conection = datetime.now()
+    _actualizar_db()
+    _LOGIN[token] = user
 
-    return None
+    return token
 
 
 def guardar_user(user: User) -> UUID:
@@ -93,6 +95,15 @@ def borrar_user(id: uuid4) -> User:
     _DB.remove(user)
     _actualizar_db()
 
+    return user
+
+
+def buscar_user_logueado(token: UUID) -> User:
+    user = _LOGIN.get(token)
+    if not user:
+        return None
+
+    login_user(user.login)
     return user
 
 
