@@ -23,7 +23,7 @@ class Location(object):
 @dataclass
 class Place(object):
     name: str
-    enable: bool
+    enable: bool = True
 
     def __eq__(self, other):
         return self.name == other.name
@@ -33,13 +33,17 @@ class Place(object):
 
     @staticmethod
     def from_json(d: dict) -> 'Place':
-        return Place(**d)
+        return {
+            'name': d.get('name'),
+            'enable': bool(d.get('enable', True))
+        }
 
 
 @dataclass
 class Timetable(object):
     movie_time: time
     places: List[Place]
+    price: float
 
     def __eq__(self, other):
         return self.movie_time == other.movie_time
@@ -47,7 +51,8 @@ class Timetable(object):
     def to_json(self) -> dict:
         return {
             'movie_time': self.movie_time.isoformat(),
-            'places': [o.to_json() for o in self.places]
+            'places': [o.to_json() for o in self.places],
+            'price': str(self.price)
         }
 
     @staticmethod
@@ -58,7 +63,8 @@ class Timetable(object):
 
         return Timetable(
             movie_time=movie_time,
-            places=[Place.from_json(d) for d in d.get('places')]
+            places=[Place.from_json(d) for d in d.get('places')],
+            price=float(price)
         )
 
 
@@ -107,3 +113,6 @@ class Cinema(object):
     def cargar_contenido(self) -> bytes:
         with open(self.image_path, 'rb') as archivo:
             return archivo.read()
+
+    def buscar_time_table(self, movie_time: time) -> Timetable:
+        return list(filter(lambda tt: tt.movie_time == movie_time, self.timetables))

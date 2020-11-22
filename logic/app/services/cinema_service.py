@@ -31,3 +31,8 @@ def borrar_cinema(id: uuid4) -> Cinema:
 
 def buscar_cinema(id: uuid4) -> Cinema:
     return cinema_repository.buscar_cinema(id)
+
+
+def ocupar_places(id_cinema: uuid4, places_name: List[str]):
+    #TODO: hacer
+    pass
