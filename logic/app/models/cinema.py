@@ -43,7 +43,7 @@ class Place(object):
 class Timetable(object):
     movie_time: time
     places: List[Place]
-    price: float
+    price: float = 0
 
     def __eq__(self, other):
         return self.movie_time == other.movie_time
@@ -64,7 +64,7 @@ class Timetable(object):
         return Timetable(
             movie_time=movie_time,
             places=[Place.from_json(d) for d in d.get('places')],
-            price=float(price)
+            price=float(d.get('price', 0))
         )
 
 

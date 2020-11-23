@@ -6,7 +6,6 @@ from flask import (Blueprint, Request, jsonify, render_template, request,
                    send_file)
 from logic.app.models.ticket import Ticket, TicketIn
 from logic.app.models.user import DiscountUser, User
-from logic.app.routes.api.v1.mappers import ticket_mapper
 from logic.app.services import ticket_service, user_service
 
 blue_print = Blueprint('tickets', __name__, url_prefix='/api/v1/tickets')
@@ -27,7 +26,7 @@ def todos_los_ticket():
     if tickets is None:
         return '', 204
 
-    return jsonify([ticket_mapper.ticket_to_json(o) for o in tickets]), 200
+    return jsonify([o.to_json() for o in tickets]), 200
 
 
 @blue_print.route('/byToken', methods=['GET'])
@@ -41,7 +40,7 @@ def tickets_del_user():
     if tickets is None:
         return '', 204
 
-    return jsonify([ticket_mapper.ticket_to_json(o) for o in tickets]), 200
+    return jsonify([o.to_json() for o in tickets]), 200
 
 
 @blue_print.route('/byToken', methods=['POST'])
