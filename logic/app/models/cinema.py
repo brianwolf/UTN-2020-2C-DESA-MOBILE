@@ -33,10 +33,10 @@ class Place(object):
 
     @staticmethod
     def from_json(d: dict) -> 'Place':
-        return {
-            'name': d.get('name'),
-            'enable': bool(d.get('enable', True))
-        }
+        return Place(
+            name=d.get('name'),
+            enable=bool(d.get('enable', True))
+        )
 
 
 @dataclass
