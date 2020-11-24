@@ -34,9 +34,9 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.39010170379639),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/monumental.jpg',
             timetables=[
-                Timetable(movie_time=time_15, places=places),
-                Timetable(movie_time=time_18, places=places),
-                Timetable(movie_time=time_21, places=places)
+                Timetable(movie_time=time_15, places=places, price=500),
+                Timetable(movie_time=time_18, places=places, price=550),
+                Timetable(movie_time=time_21, places=places, price=520)
             ],
             id=uuid4()
         ),
@@ -49,9 +49,9 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.4682372),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/gaumont.jpg',
             timetables=[
-                Timetable(movie_time=time_15, places=places),
-                Timetable(movie_time=time_18, places=places),
-                Timetable(movie_time=time_21, places=places)
+                Timetable(movie_time=time_15, places=places, price=550),
+                Timetable(movie_time=time_18, places=places, price=600),
+                Timetable(movie_time=time_21, places=places, price=570)
             ],
             id=uuid4()
         ),
@@ -64,9 +64,9 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.39010170379639),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/hoyts.jpg',
             timetables=[
-                Timetable(movie_time=time_15, places=places),
-                Timetable(movie_time=time_18, places=places),
-                Timetable(movie_time=time_21, places=places)
+                Timetable(movie_time=time_15, places=places, price=560),
+                Timetable(movie_time=time_18, places=places, price=620),
+                Timetable(movie_time=time_21, places=places, price=530)
             ],
             id=uuid4()
         )

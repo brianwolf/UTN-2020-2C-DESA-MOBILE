@@ -3,6 +3,9 @@ from datetime import datetime, time
 from typing import List
 from uuid import UUID, uuid4
 
+from logic.app.errors.cinema_error import CinemaErrors
+from logic.libs.excepcion.excepcion import AppException
+
 
 @dataclass
 class Location(object):
@@ -23,7 +26,7 @@ class Location(object):
 @dataclass
 class Place(object):
     name: str
-    enable: bool
+    enable: bool = True
 
     def __eq__(self, other):
         return self.name == other.name
@@ -33,13 +36,17 @@ class Place(object):
 
     @staticmethod
     def from_json(d: dict) -> 'Place':
-        return Place(**d)
+        return Place(
+            name=d.get('name'),
+            enable=bool(d.get('enable', True))
+        )
 
 
 @dataclass
 class Timetable(object):
     movie_time: time
     places: List[Place]
+    price: float = 0
 
     def __eq__(self, other):
         return self.movie_time == other.movie_time
@@ -47,7 +54,8 @@ class Timetable(object):
     def to_json(self) -> dict:
         return {
             'movie_time': self.movie_time.isoformat(),
-            'places': [o.to_json() for o in self.places]
+            'places': [o.to_json() for o in self.places],
+            'price': str(self.price)
         }
 
     @staticmethod
@@ -58,8 +66,25 @@ class Timetable(object):
 
         return Timetable(
             movie_time=movie_time,
-            places=[Place.from_json(d) for d in d.get('places')]
+            places=[Place.from_json(d) for d in d.get('places')],
+            price=float(d.get('price', 0))
         )
+
+    def ocupar_place(self, place_name: str):
+
+        butacas_elegidas = list(
+            filter(lambda p: p.name == place_name, self.places))
+
+        butacas_elegidas_ocupadas = [
+            p for p in butacas_elegidas
+            if not p.enable
+        ]
+        if butacas_elegidas_ocupadas:
+            msj = f'La butaca {place_name} esta ocupada'
+            raise AppException(codigo=CinemaErrors.BUTACA_OCUPADA, mensaje=msj)
+
+        for p in butacas_elegidas:
+            p.enable = False
 
 
 @dataclass
@@ -107,3 +132,8 @@ class Cinema(object):
     def cargar_contenido(self) -> bytes:
         with open(self.image_path, 'rb') as archivo:
             return archivo.read()
+
+    def buscar_time_table(self, movie_time: time) -> Timetable:
+        resultado = list(filter(lambda tt: tt.movie_time ==
+                                movie_time, self.timetables))
+        return resultado[0] if resultado else None

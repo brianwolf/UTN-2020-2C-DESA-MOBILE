@@ -25,7 +25,7 @@ class Discount(object):
             'id': str(self.id)
         }
 
-    @ staticmethod
+    @staticmethod
     def from_json(d: dict) -> 'Discount':
 
         id = UUID(str(d.get('id'))) if 'id' in d else uuid4()

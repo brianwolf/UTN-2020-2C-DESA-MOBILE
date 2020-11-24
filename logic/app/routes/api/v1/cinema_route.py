@@ -4,24 +4,30 @@ from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
 from logic.app.models.cinema import Location, Place
+from logic.app.routes.api.v1.mappers import cinema_mapper
 from logic.app.services import cinema_service
 
 blue_print = Blueprint('cinemas', __name__, url_prefix='/api/v1/cinemas')
 
 
-@blue_print.route('/<id>', methods=['GET'])
-def buscar_cinema(id: str):
+@blue_print.route('/', methods=['GET'])
+def todos_los_cinemas():
 
-    cinemas = cinema_service.buscar_cinema(UUID(id))
+    cinemas = cinema_service.todos_los_cinema()
     if cinemas is None:
         return '', 204
 
-    json_cinema = cinemas.to_json()
-    json_cinema.pop('location')
-    json_cinema.pop('image_path')
-    json_cinema.pop('timetables')
+    return jsonify([cinema_mapper.cinema_to_json_short(c) for c in cinemas]), 200
 
-    return jsonify(json_cinema), 200
+
+@blue_print.route('/<id>', methods=['GET'])
+def buscar_cinema(id: str):
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
+        return '', 204
+
+    return jsonify(cinema_mapper.cinema_to_json_short(cinema)), 200
 
 
 @blue_print.route('/closest', methods=['GET'])

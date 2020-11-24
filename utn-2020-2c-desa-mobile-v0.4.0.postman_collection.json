@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
-		"name": "utn-2020-2c-desa-mobile-v0.3.0",
+		"name": "utn-2020-2c-desa-mobile-v0.4.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -60,7 +60,7 @@
 					"response": []
 				},
 				{
-					"name": "variables Copy",
+					"name": "reiniciar base de datos",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -344,7 +344,8 @@
 												"id": "80201e2f-1bed-4d00-b925-56705c0be125",
 												"exec": [
 													"var jsonData = JSON.parse(responseBody);",
-													"pm.collectionVariables.set(\"id_descuento_ejemplo\", jsonData[0].id);",
+													"pm.collectionVariables.set(\"id_descuento_100_pe\", jsonData[0].id);",
+													"pm.collectionVariables.set(\"id_descuento_10_por\", jsonData[3].id);",
 													"",
 													""
 												],
@@ -426,7 +427,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"id\": \"{{id_descuento_ejemplo}}\"\n}",
+											"raw": "{\n    \"id\": \"{{id_descuento_10_por}}\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -558,7 +559,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca",
+											"raw": "{{url}}/api/v1/cinemas/c2dcce86-b12e-43eb-9e6d-6261661e0a6b",
 											"host": [
 												"{{url}}"
 											],
@@ -566,7 +567,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"17a90ac3-2318-4943-a340-a33a17e2d2ca"
+												"c2dcce86-b12e-43eb-9e6d-6261661e0a6b"
 											]
 										}
 									},
@@ -620,7 +621,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables",
+											"raw": "{{url}}/api/v1/cinemas/c2dcce86-b12e-43eb-9e6d-6261661e0a6b/timetables",
 											"host": [
 												"{{url}}"
 											],
@@ -628,7 +629,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"c2dcce86-b12e-43eb-9e6d-6261661e0a6b",
 												"timetables"
 											]
 										}
@@ -641,7 +642,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables/15:00:00/places",
+											"raw": "{{url}}/api/v1/cinemas/40cd3478-a862-4d5f-bdf9-e611488d99b7/timetables/15:00:00/places",
 											"host": [
 												"{{url}}"
 											],
@@ -649,7 +650,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"f27db908-db46-436c-bae8-3ce0256bfdd0",
+												"40cd3478-a862-4d5f-bdf9-e611488d99b7",
 												"timetables",
 												"15:00:00",
 												"places"
@@ -677,6 +678,93 @@
 												"15:00:00",
 												"places",
 												"enables"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "tickets",
+							"item": [
+								{
+									"name": "todos los boletos comprados",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/tickets",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"tickets"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "boletos comprados por login",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/tickets/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"tickets",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "comprar boleto",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id_movie\": 528085,\n    \"id_cinema\": \"58c905a5-f15b-43f9-bc86-299c03df3953\",\n    \"movie_time\": \"15:00:00\",\n    \"places\": [\n        \"B1\",\n        \"B2\",\n        \"B3\"\n    ],\n    \"discounts\": [\n        \"722800e7-9546-4095-b6c2-c40fd4f06e76\"\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/tickets/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"tickets",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
 											]
 										}
 									},
@@ -830,18 +918,28 @@
 	],
 	"variable": [
 		{
-			"id": "c0f55ee0-ef22-4cb9-9dd6-0930f03322cc",
+			"id": "51fbc601-294e-48d9-b0bc-6c538551efc2",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "b6b58035-9ac4-4bf8-975d-533e51bf16bd",
+			"id": "0d1dc94e-d3b6-4195-ab21-393fbc74a977",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "6079a658-3960-4108-845b-d560f3cd4a08",
+			"id": "b7fb62cb-2ece-4f94-8829-4e83830d656d",
 			"key": "id_descuento_ejemplo",
+			"value": ""
+		},
+		{
+			"id": "bc7cf5c2-d377-4555-bb83-48f13a3cced8",
+			"key": "id_descuento_100_pe",
+			"value": ""
+		},
+		{
+			"id": "7faaf1a0-dddf-45e0-a40c-fb496d225503",
+			"key": "id_descuento_10_por",
 			"value": ""
 		}
 	],

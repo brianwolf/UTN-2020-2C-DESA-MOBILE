@@ -5,7 +5,8 @@ from typing import Dict, List
 from uuid import UUID, uuid4
 
 from logic.app.configs import config
-from logic.app.models.user import Login, User, CreditCard
+from logic.app.models.user import CreditCard, Login, User
+from logic.app.repositories import discount_repository
 
 _DIRECOTRIO_JSON: str = f'{config.DIRECTORIO_DB}/user.json'
 _DB: List[User] = []
@@ -23,7 +24,8 @@ def _users_hard() -> List[User]:
                     name='Jose',
                     expiration='02/2025'
                 )
-            ]
+            ],
+            discounts=discount_repository.todos_los_discount()
         )
     ]
 
