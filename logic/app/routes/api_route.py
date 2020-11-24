@@ -5,7 +5,7 @@ from os import listdir, getcwd
 from flask import Blueprint, jsonify, render_template, send_file
 from logic.app.configs import config, directorios_config
 from logic.app.repositories import (cinema_repository, discount_repository,
-                                    qr_repository, user_repository)
+                                    qr_repository, user_repository, ticket_repository)
 
 blue_print = Blueprint('api', __name__, url_prefix='')
 
@@ -34,6 +34,7 @@ def borrar_directorios_generados():
     discount_repository._cargar_db()
     qr_repository._cargar_db()
     user_repository._cargar_db()
+    ticket_repository._cargar_db()
 
     return '', 200
 

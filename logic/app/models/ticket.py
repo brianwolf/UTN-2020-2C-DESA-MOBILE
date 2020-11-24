@@ -9,7 +9,7 @@ from logic.app.models.cinema import Timetable
 @dataclass
 class TicketIn(object):
     id_user: UUID
-    id_movie: str
+    id_movie: int
     id_cinema: UUID
     movie_time: time
     places: List[str]
@@ -22,7 +22,7 @@ class TicketIn(object):
     def to_json(self) -> dict:
         return {
             'id_user': str(self.id_user),
-            'id_movie': str(self.id_movie),
+            'id_movie': self.id_movie,
             'id_cinema': str(self.id_cinema),
             'movie_time': self.movie_time.isoformat(),
             'places': self.places,
@@ -33,16 +33,18 @@ class TicketIn(object):
     @staticmethod
     def from_json(d: dict) -> 'TicketIn':
 
+        id_user = UUID(d.get('id_user')) if 'id_user' in d else None
+
         movie_time = time.fromisoformat(
             d.get('movie_time')) if 'movie_time' in d else datetime.now().time()
 
         return TicketIn(
-            id_user=UUID(d['id_user']),
-            id_movie=d['id_movie'],
+            id_user=id_user,
+            id_movie=int(d['id_movie']),
             id_cinema=UUID(d['id_cinema']),
             movie_time=movie_time,
-            palces=d['places'],
-            discounts=[UUID(u) for u in d['discounts']],
+            places=d['places'],
+            discounts=[UUID(u) for u in d.get('discounts', [])],
             credit_card_number=d['credit_card_number']
         )
 
@@ -143,7 +145,7 @@ class Ticket(object):
 
         return Ticket(
             movie=MovieTicket.from_json(d['movie']),
-            cinema=MovieTicket.from_json(d['cinema']),
+            cinema=CinemaTicket.from_json(d['cinema']),
             purchase_date=datetime.fromisoformat(d['purchase_date']),
             discounts=[UUID(u) for u in d['discounts']],
             credit_card_number=d['credit_card_number'],

@@ -3,13 +3,19 @@ from datetime import datetime
 from typing import List
 from uuid import UUID
 
+from logic.app.errors.cinema_error import CinemaErrors
+from logic.app.errors.discount_error import DiscountErrors
+from logic.app.errors.themoviedb_error import TheMovieDBErrors
+from logic.app.errors.user_error import UserErrors
 from logic.app.models.cinema import Cinema
 from logic.app.models.discount import Discount
 from logic.app.models.ticket import CinemaTicket, MovieTicket, Ticket, TicketIn
-from logic.app.models.user import User
+from logic.app.models.user import DiscountUser, User
 from logic.app.repositories import ticket_repository
 from logic.app.routes.proxy.v1 import pagina_peliculas_proxy
-from logic.app.services import cinema_service, discount_service, qr_service
+from logic.app.services import (cinema_service, discount_service, qr_service,
+                                user_service)
+from logic.libs.excepcion.excepcion import AppException
 
 
 def guardar_ticket(ticket: Ticket) -> UUID:
@@ -39,9 +45,15 @@ def comprar_ticket(ticket_in: TicketIn) -> Ticket:
 
     qr = qr_service.crear_qr()
 
-    url_final = f'/movie/{ticket_in.id_movie}'
-    respuesta = pagina_peliculas_proxy.proxy(url_final)
-    dic_themoviedb = json.loads(respuesta.decode('utf-8'))
+    url_final = f'movie/{ticket_in.id_movie}'
+
+    try:
+        respuesta = pagina_peliculas_proxy.proxy(url_final)
+        dic_themoviedb = respuesta.json
+    except Exception as e:
+        msj = f'Error en el servicio de TheMovieDB -> {str(e)}'
+        raise AppException(
+            codigo=TheMovieDBErrors.ERROR_EN_SERVICIO_EXTERNO, mensaje=msj, error=e)
 
     movie_ticket = MovieTicket(
         id_themoviedb=ticket_in.id_movie,
@@ -50,7 +62,13 @@ def comprar_ticket(ticket_in: TicketIn) -> Ticket:
     )
 
     cinema = cinema_service.buscar_cinema(ticket_in.id_cinema)
-    cinema_service.ocupar_places(cinema.id, ticket_in.places)
+    if not cinema:
+        msj = f'El cinema con id {str(ticket_in.id_cinema)} no fue encontrado'
+        raise AppException(
+            codigo=CinemaErrors.CINE_NO_ENCONTRADO, mensaje=msj)
+
+    cinema_service.ocupar_places(
+        cinema.id, ticket_in.movie_time, ticket_in.places)
 
     cinema_ticket = CinemaTicket(
         id_cinema=cinema.id,
@@ -60,10 +78,23 @@ def comprar_ticket(ticket_in: TicketIn) -> Ticket:
         places=ticket_in.places
     )
 
-    discounts = [
-        discount_service.buscar_discount(d.id)
-        for d in ticket_in.discounts
-    ]
+    user = user_service.buscar_user(ticket_in.id_user)
+
+    discounts = []
+    for d_id in ticket_in.discounts:
+
+        if DiscountUser(id=d_id) not in user.discounts:
+            msj = f'El usuario no tiene el descuento con id {str(d_id)}'
+            raise AppException(
+                codigo=UserErrors.USUARIO_NO_TIENE_ESE_DESCUENTO, mensaje=msj)
+
+        d = discount_service.buscar_discount(d_id)
+        if not d:
+            msj = f'El descuento con id {str(d_id)} no fue encontrado'
+            raise AppException(
+                codigo=DiscountErrors.DESCUENTO_NO_ENCONTRADO, mensaje=msj)
+
+        discounts.append(d)
 
     price = calcular_precio_final(
         ticket_in=ticket_in, cinema=cinema, discounts=discounts)
@@ -79,7 +110,12 @@ def comprar_ticket(ticket_in: TicketIn) -> Ticket:
         id_qr=qr.id
     )
 
-    return ticket_repository.guardar_ticket(ticket)
+    id_entrada_comprada = ticket_repository.guardar_ticket(ticket)
+
+    for d in discounts:
+        user_service.borrar_descuento(ticket_in.id_user, d.id)
+
+    return id_entrada_comprada
 
 
 def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts: List[Discount] = []) -> float:
@@ -93,7 +129,13 @@ def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts:
             for d in ticket_in.discounts
         ]
 
-    precio_butaca = cinema.buscar_time_table(ticket_in.movie_time).price
+    horario = cinema.buscar_time_table(ticket_in.movie_time)
+    if not horario:
+        msj = f'El horario {str(ticket_in.movie_time)} no fue encontrado en el cine especificado'
+        raise AppException(
+            codigo=CinemaErrors.HORARIO_NO_ENCONTRADO, mensaje=msj)
+
+    precio_butaca = horario.price
     cantidad_butacas = len(ticket_in.places)
 
     precio_base = precio_butaca * cantidad_butacas
@@ -106,8 +148,8 @@ def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts:
             descuento_porcentual += d.discount_percent / 100
             continue
 
-        if d.descuento_directo:
-            descuento_directo += d.descuento_directo
+        if d.discount_price:
+            descuento_directo += d.discount_price
             continue
 
     precio_porcentual = 1 - descuento_porcentual

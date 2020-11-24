@@ -1,5 +1,6 @@
 import math
 import os
+from datetime import time
 from typing import List
 from uuid import UUID, uuid4
 
@@ -25,14 +26,20 @@ def todos_los_cinema_mas_cercano(location: Location) -> List[Cinema]:
     return sorted(cinema_repository.todos_los_cinema(), key=ordenamiento)
 
 
-def borrar_cinema(id: uuid4) -> Cinema:
+def borrar_cinema(id: UUID) -> Cinema:
     return cinema_repository.borrar_cinema(id)
 
 
-def buscar_cinema(id: uuid4) -> Cinema:
+def buscar_cinema(id: UUID) -> Cinema:
     return cinema_repository.buscar_cinema(id)
 
 
-def ocupar_places(id_cinema: uuid4, places_name: List[str]):
-    #TODO: hacer
-    pass
+def ocupar_places(id_cinema: UUID, movie_time: time, places_name: List[str]):
+    cinema = buscar_cinema(id_cinema)
+    time_table = cinema.buscar_time_table(movie_time)
+
+    for pn in places_name:
+        time_table.ocupar_place(pn)
+
+    borrar_cinema(id_cinema)
+    guardar_cinema(cinema)

@@ -3,6 +3,9 @@ from datetime import datetime, time
 from typing import List
 from uuid import UUID, uuid4
 
+from logic.app.errors.cinema_error import CinemaErrors
+from logic.libs.excepcion.excepcion import AppException
+
 
 @dataclass
 class Location(object):
@@ -67,6 +70,22 @@ class Timetable(object):
             price=float(d.get('price', 0))
         )
 
+    def ocupar_place(self, place_name: str):
+
+        butacas_elegidas = list(
+            filter(lambda p: p.name == place_name, self.places))
+
+        butacas_elegidas_ocupadas = [
+            p for p in butacas_elegidas
+            if not p.enable
+        ]
+        if butacas_elegidas_ocupadas:
+            msj = f'La butaca {place_name} esta ocupada'
+            raise AppException(codigo=CinemaErrors.BUTACA_OCUPADA, mensaje=msj)
+
+        for p in butacas_elegidas:
+            p.enable = False
+
 
 @dataclass
 class Cinema(object):
@@ -115,4 +134,6 @@ class Cinema(object):
             return archivo.read()
 
     def buscar_time_table(self, movie_time: time) -> Timetable:
-        return list(filter(lambda tt: tt.movie_time == movie_time, self.timetables))
+        resultado = list(filter(lambda tt: tt.movie_time ==
+                                movie_time, self.timetables))
+        return resultado[0] if resultado else None
