@@ -53,5 +53,5 @@ def comprar_ticket():
     ticket = TicketIn.from_json(request.json)
     ticket.id_user = user.id
 
-    ticket_service.comprar_ticket(ticket)
-    return '', 201
+    id_ticket = ticket_service.comprar_ticket(ticket)
+    return jsonify(id=id_ticket), 201
