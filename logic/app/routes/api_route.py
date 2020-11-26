@@ -42,11 +42,13 @@ def borrar_directorios_generados():
 @blue_print.route('/postman', methods=['GET'])
 def descargar_coleccion_de_postman():
 
-    archivo_dir = next(iter([
+    archivos_postman = sorted([
         f
         for f in listdir(getcwd())
         if str(f).endswith('.postman_collection.json')
-    ]), None)
+    ], reverse=True)
+
+    archivo_dir = next(iter(archivos_postman), None)
 
     if not archivo_dir:
         return '', 204
