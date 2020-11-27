@@ -33,13 +33,16 @@ def buscar_cinema(id: str):
 @blue_print.route('/closest', methods=['GET'])
 def todos_los_cinema_mas_cercano():
 
+    movie_id = int(request.args.get('movie')
+                   ) if 'movie' in request.args else None
+
     longitude = float(request.args.get('longitude'))
     latitude = float(request.args.get('latitude'))
 
     location = Location(longitude=longitude, latitude=latitude)
 
     json_cinemas = []
-    for c in cinema_service.todos_los_cinema_mas_cercano(location):
+    for c in cinema_service.todos_los_cinema_mas_cercano(location, movie_id=movie_id):
 
         j = c.to_json()
         j.pop('location')

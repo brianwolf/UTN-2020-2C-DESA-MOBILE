@@ -12,11 +12,21 @@ def guardar_cinema(cinema: Cinema) -> UUID:
     return cinema_repository.guardar_cinema(cinema)
 
 
-def todos_los_cinema() -> List[Cinema]:
+def todos_los_cinema(movie_id=None) -> List[Cinema]:
+
+    cines = cinema_repository.todos_los_cinema()
+
+    if movie_id:
+
+        def estrena_esa_peli(tt): return tt.movie_id == movie_id
+        def cine_tiene_peli(c): return filter(estrena_esa_peli, c.timetables)
+
+        cines = filter(cine_tiene_peli, cines)
+
     return cinema_repository.todos_los_cinema()
 
 
-def todos_los_cinema_mas_cercano(location: Location) -> List[Cinema]:
+def todos_los_cinema_mas_cercano(location: Location, movie_id=None) -> List[Cinema]:
 
     def ordenamiento(c: Cinema):
         x = location.longitude - c.location.longitude

@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from datetime import datetime, time
+from datetime import date, datetime, time
 from typing import List
 from uuid import UUID, uuid4
 
@@ -44,15 +44,19 @@ class Place(object):
 
 @dataclass
 class Timetable(object):
+    movie_id: int
+    movie_date: date
     movie_time: time
     places: List[Place]
     price: float = 0
 
     def __eq__(self, other):
-        return self.movie_time == other.movie_time
+        return self.movie_time == other.movie_time and self.movie_id == other.movie_id and self.movie_date == other.movie_date
 
     def to_json(self) -> dict:
         return {
+            'movie_id': self.movie_id,
+            'movie_date': self.movie_date.isoformat(),
             'movie_time': self.movie_time.isoformat(),
             'places': [o.to_json() for o in self.places],
             'price': str(self.price)
@@ -64,7 +68,12 @@ class Timetable(object):
         movie_time = time.fromisoformat(
             d.get('movie_time')) if 'movie_time' in d else datetime.now().time()
 
+        movie_date = time.fromisoformat(
+            d.get('movie_date')) if 'movie_date' in d else datetime.now().date()
+
         return Timetable(
+            movie_id=d.get('movie_id'),
+            movie_date=movie_date,
             movie_time=movie_time,
             places=[Place.from_json(d) for d in d.get('places')],
             price=float(d.get('price', 0))
