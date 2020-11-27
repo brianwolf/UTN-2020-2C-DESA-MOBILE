@@ -1,7 +1,7 @@
 import json
 import os.path
 from typing import List
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from logic.app.configs import config
 from logic.app.models.discount import Discount
@@ -13,31 +13,36 @@ _DB: List[Discount] = []
 
 
 def _discounts_hard() -> List[Discount]:
-    qr1 = qr_service.crear_qr()
-    qr2 = qr_service.crear_qr()
-    qr3 = qr_service.crear_qr()
-    qr4 = qr_service.crear_qr()
+
+    id_1 = uuid4()
+    id_2 = uuid4()
+    id_3 = uuid4()
+    id_4 = uuid4()
 
     return [
         Discount(
             description='Descuento de $100 en el total de tu próxima compra',
-            qr=qr1,
-            discount_price=100.0
+            qr=qr_service.crear_qr(id=id_1),
+            discount_price=100.0,
+            id=id_1
         ),
         Discount(
             description='Descuento de $300 en el total de tu próxima compra',
-            qr=qr2,
-            discount_price=300.0
+            qr=qr_service.crear_qr(id=id_2),
+            discount_price=300.0,
+            id=id_2
         ),
         Discount(
             description='Descuento del 10% del total de tu próxima compra',
-            qr=qr3,
-            discount_percent=10
+            qr=qr_service.crear_qr(id=id_3),
+            discount_percent=10,
+            id=id_3
         ),
         Discount(
             description='Descuento de 20% en el total de tu próxima compra',
-            qr=qr4,
-            discount_percent=20
+            qr=qr_service.crear_qr(id=id_4),
+            discount_percent=20,
+            id=id_4
         )
     ]
 
