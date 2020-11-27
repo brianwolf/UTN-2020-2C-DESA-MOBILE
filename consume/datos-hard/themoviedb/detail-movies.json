@@ -1,0 +1,1654 @@
+[
+    {
+        "adult": false,
+        "backdrop_path": "/fTDzKoQIh1HeyjfpG5AHMi2jxAJ.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 35,
+                "name": "Comedia"
+            }
+        ],
+        "homepage": "",
+        "id": 682377,
+        "imdb_id": "tt10944486",
+        "original_language": "en",
+        "original_title": "Chick Fight",
+        "overview": "",
+        "popularity": 1228.363,
+        "poster_path": "/4ZocdxnOO6q2UbdKye2wgofLFhB.jpg",
+        "production_companies": [],
+        "production_countries": [],
+        "release_date": "2020-11-13",
+        "revenue": 0,
+        "reviews": {
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                },
+                {
+                    "id": "4",
+                    "author": "JUAN LUIS GUIJARRO LAMAS",
+                    "content": "mas o menos, esperaba mas"
+                },
+                {
+                    "id": "5",
+                    "author": "CELIA ARGUELLES TOLOSA",
+                    "content": "excelente"
+                }
+            ]
+        },
+        "runtime": 0,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Chick Fight",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 7.2,
+        "vote_count": 11
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 53,
+                "name": "Suspense"
+            }
+        ],
+        "homepage": "",
+        "id": 724989,
+        "imdb_id": "tt11656172",
+        "original_language": "en",
+        "original_title": "Hard Kill",
+        "overview": "El trabajo del multimillonario Donovan Chalmers (Bruce Willis) es tan valioso que contrata a mercenarios para protegerlo. Pese a ello, un grupo terrorista logra secuestrar a su hija para conseguir acercarse a él.",
+        "popularity": 1089.982,
+        "poster_path": "/x7Dc6FTBYOfwMDEHSGW6EOitidk.jpg",
+        "production_companies": [
+            {
+                "id": 121204,
+                "logo_path": null,
+                "name": "BondIt Media Capital",
+                "origin_country": "US"
+            },
+            {
+                "id": 130900,
+                "logo_path": null,
+                "name": "Buffalo 8 Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 85562,
+                "logo_path": null,
+                "name": "River Bay Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 65649,
+                "logo_path": "/2xZVvFYyVtIHSo4vG5R0IIak0EL.png",
+                "name": "SSS Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 10405,
+                "logo_path": null,
+                "name": "EFO Films",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-10-23",
+        "revenue": 0,
+        "reviews": {
+            "results": [
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                },
+                {
+                    "id": "4",
+                    "author": "JUAN LUIS GUIJARRO LAMAS",
+                    "content": "mas o menos, esperaba mas"
+                },
+                {
+                    "id": "5",
+                    "author": "CELIA ARGUELLES TOLOSA",
+                    "content": "excelente"
+                }
+            ]
+        },
+        "runtime": 98,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Hard Kill",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 4.9,
+        "vote_count": 178
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/8rIoyM6zYXJNjzGseT3MRusMPWl.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 14,
+                "name": "Fantasía"
+            },
+            {
+                "id": 10751,
+                "name": "Familia"
+            },
+            {
+                "id": 12,
+                "name": "Aventura"
+            },
+            {
+                "id": 35,
+                "name": "Comedia"
+            },
+            {
+                "id": 27,
+                "name": "Terror"
+            }
+        ],
+        "homepage": "https://www.thewitchesmovie.net/",
+        "id": 531219,
+        "imdb_id": "tt0805647",
+        "original_language": "en",
+        "original_title": "Roald Dahl's The Witches",
+        "overview": "Cuenta la conmovedora historia de un pequeño huérfano (Bruno) que, a finales de 1967, se va a vivir con su querida abuela (Spencer) a Demopolis, un pueblo de Alabama. El niño y su abuela tienen extraños encuentros con algunas brujas aparentemente glamurosas pero absolutamente diabólicas, así que ella decide quitarse de en medio y llevarse al chico a un hotel de lujo en la costa. Por desgracia, llegan exactamente al mismo tiempo que la Gran Bruja (Hathaway) que ha reunido a sus compinches de todo el planeta -que van de incógnito- para llevar a cabo sus horribles planes. Adaptación del libro \"Las brujas\" de Roald Dahl.",
+        "popularity": 907.454,
+        "poster_path": "/s1y92244iBlKW04rEnaEK8i8tPY.jpg",
+        "production_companies": [
+            {
+                "id": 11395,
+                "logo_path": "/5vSBzUwnCcaF90ZTchG3LwRKQ2M.png",
+                "name": "ImageMovers",
+                "origin_country": "US"
+            },
+            {
+                "id": 174,
+                "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
+                "name": "Warner Bros. Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 101082,
+                "logo_path": null,
+                "name": "Double Dare You Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 141325,
+                "logo_path": null,
+                "name": "Esperanto Filmoj",
+                "origin_country": "MX"
+            },
+            {
+                "id": 6254,
+                "logo_path": "/dHfP8fUyykmTsMXbtXO0kSsYz5E.png",
+                "name": "The Jim Henson Company",
+                "origin_country": "US"
+            },
+            {
+                "id": 11627,
+                "logo_path": null,
+                "name": "Necropia Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "MX",
+                "name": "Mexico"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-10-26",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                },
+                {
+                    "id": "4",
+                    "author": "JUAN LUIS GUIJARRO LAMAS",
+                    "content": "mas o menos, esperaba mas"
+                },
+                {
+                    "id": "5",
+                    "author": "CELIA ARGUELLES TOLOSA",
+                    "content": "excelente"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 106,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "Dutch",
+                "iso_639_1": "nl",
+                "name": "Nederlands"
+            }
+        ],
+        "status": "Released",
+        "tagline": "¡¡ Ellas son Reales !!",
+        "title": "Las brujas",
+        "video": false,
+        "videos": {
+            "results": [
+                {
+                    "id": "5f9ee4d827167100367398e0",
+                    "iso_3166_1": "MX",
+                    "iso_639_1": "es",
+                    "key": "oCTwf0-34gU",
+                    "name": "Las Brujas (The Witches) (2020) - Tráiler en Español Latino",
+                    "site": "YouTube",
+                    "size": 1080,
+                    "type": "Trailer"
+                }
+            ]
+        },
+        "vote_average": 6.9,
+        "vote_count": 791
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/wu1uilmhM4TdluKi2ytfz8gidHf.jpg",
+        "belongs_to_collection": {
+            "backdrop_path": "/uDbMvHRX0LMUxmsMyOOrPeLYHO5.jpg",
+            "id": 275402,
+            "name": "Bob Esponja - Colección",
+            "poster_path": "/bsCBgNIeqwUh0rWrEjojH7Xbqto.jpg"
+        },
+        "budget": 60000000,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animación"
+            },
+            {
+                "id": 14,
+                "name": "Fantasía"
+            },
+            {
+                "id": 12,
+                "name": "Aventura"
+            },
+            {
+                "id": 35,
+                "name": "Comedia"
+            },
+            {
+                "id": 10751,
+                "name": "Familia"
+            }
+        ],
+        "homepage": "https://www.spongebobmovie.com/",
+        "id": 400160,
+        "imdb_id": "tt4823776",
+        "original_language": "en",
+        "original_title": "The SpongeBob Movie: Sponge on the Run",
+        "overview": "Los amigos son lo más importante para Bob Esponja, por lo que no dudará en salir de la comodidad de su hogar en Fondo de Bikini, junto con Patricio, para adentrarse en un mundo desconocido, arriesgando sus vidas, para salvar a su amigo de la infancia, Gary, de las garras del rey Poseidón que le ha secuestrado en la Ciudad Perdida de la Atlantida. ¿Serán capaces de lograrlo?",
+        "popularity": 902.795,
+        "poster_path": "/sp9fYcVbUHDFgGZpLvCSJsplfbd.jpg",
+        "production_companies": [
+            {
+                "id": 8921,
+                "logo_path": null,
+                "name": "United Plankton Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 2348,
+                "logo_path": "/m31fQvZJuUvAgxoqTiCGYFBfZYe.png",
+                "name": "Nickelodeon Movies",
+                "origin_country": "US"
+            },
+            {
+                "id": 24955,
+                "logo_path": "/bX3cYCRWdddXTgIcDEfNiVa8U4j.png",
+                "name": "Paramount Animation",
+                "origin_country": "US"
+            },
+            {
+                "id": 4,
+                "logo_path": "/fycMZt242LVjagMByZOLUGbCvv3.png",
+                "name": "Paramount",
+                "origin_country": "US"
+            },
+            {
+                "id": 2531,
+                "logo_path": "/pC2iDCDCvV85vOBP7a5Ukxuc0Du.png",
+                "name": "MRC",
+                "origin_country": "US"
+            },
+            {
+                "id": 8649,
+                "logo_path": null,
+                "name": "Mikros Image",
+                "origin_country": "FR"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "KR",
+                "name": "South Korea"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-08-14",
+        "revenue": 4700000,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 95,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Ellos ya no estarán nunca más en Fondo de Bikini",
+        "title": "Bob Esponja: Al rescate",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 8.0,
+        "vote_count": 1542
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/2Fk3AB8E9dYIBc2ywJkxk8BTyhc.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 53,
+                "name": "Suspense"
+            }
+        ],
+        "homepage": "http://www.stxfilms.com/greenland/",
+        "id": 524047,
+        "imdb_id": "tt7737786",
+        "original_language": "en",
+        "original_title": "Greenland",
+        "overview": "",
+        "popularity": 888.496,
+        "poster_path": "/ltlKaXvIHMTOgxqVbZSGUqcExuN.jpg",
+        "production_companies": [
+            {
+                "id": 47729,
+                "logo_path": "/5NRpQ7xxmODXAjt2pRWUFMLVzvP.png",
+                "name": "STX Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 3528,
+                "logo_path": "/cCzCClIzIh81Fa79hpW5nXoUsHK.png",
+                "name": "Thunder Road",
+                "origin_country": "US"
+            },
+            {
+                "id": 138743,
+                "logo_path": null,
+                "name": "Anton",
+                "origin_country": "GB"
+            },
+            {
+                "id": 103331,
+                "logo_path": null,
+                "name": "G-BASE",
+                "origin_country": "US"
+            },
+            {
+                "id": 76314,
+                "logo_path": "/oFiHo3350Nj7bi6oxYMq3Kp6VGC.png",
+                "name": "Riverstone Pictures",
+                "origin_country": "GB"
+            },
+            {
+                "id": 1634,
+                "logo_path": null,
+                "name": "Truenorth Productions",
+                "origin_country": "IS"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-07-29",
+        "revenue": 163894,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 120,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Greenland",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 7.2,
+        "vote_count": 672
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/gnf4Cb2rms69QbCnGFJyqwBWsxv.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 53,
+                "name": "Suspense"
+            },
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 80,
+                "name": "Crimen"
+            }
+        ],
+        "homepage": "https://www.netflix.com/title/81115400",
+        "id": 671039,
+        "imdb_id": "tt10127684",
+        "original_language": "fr",
+        "original_title": "Bronx",
+        "overview": "",
+        "popularity": 802.832,
+        "poster_path": "/hSpm2mMbkd0hLTRWBz0zolnLAyK.jpg",
+        "production_companies": [
+            {
+                "id": 9,
+                "logo_path": "/nda3dTUYdDrJ6rZqBpYvY865aDv.png",
+                "name": "Gaumont",
+                "origin_country": "FR"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "FR",
+                "name": "France"
+            }
+        ],
+        "release_date": "2020-10-30",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 116,
+        "spoken_languages": [
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Français"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Bronx",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 5.8,
+        "vote_count": 237
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/qAKvUu2FSaDlnqznY4VOp5PmjIF.jpg",
+        "belongs_to_collection": null,
+        "budget": 200000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 12,
+                "name": "Aventura"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 14,
+                "name": "Fantasía"
+            }
+        ],
+        "homepage": "https://movies.disney.com/mulan-2020d",
+        "id": 337401,
+        "imdb_id": "tt4566758",
+        "original_language": "en",
+        "original_title": "Mulan",
+        "overview": "Narra la historia de Mulán, una intrépida joven lo arriesga todo por amor a su familia y a su país hasta convertirse en una de las mayores guerreras de la historia de China. Cuando el emperador de China decreta que un hombre de cada familia debe servir en el Ejército Imperial para defender al país de los invasores del norte, Hua Mulán, la hija mayor de un condecorado guerrero, decide ocupar el lugar de su padre enfermo. Haciéndose pasar por un hombre, Hua Jun, se enfrenta a constantes desafíos y deberá aprender a canalizar su fuerza interior y a aceptar su verdadero potencial. Un viaje épico que la convertirá en una reconocida guerrera y le permitirá ganarse el respeto de una nación agradecida... y de un padre orgulloso. Remake del clásico de Disney.",
+        "popularity": 696.756,
+        "poster_path": "/rd7ElSRYhN2CFqMcyH8rqrwLbd6.jpg",
+        "production_companies": [
+            {
+                "id": 2,
+                "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+                "name": "Walt Disney Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 14714,
+                "logo_path": "/oQHaOZEnPzlJACVTisV0FICrS82.png",
+                "name": "China Film Group Corporation",
+                "origin_country": "CN"
+            },
+            {
+                "id": 103698,
+                "logo_path": "/qS01bSMe274ecTdrgyO3BBvzfKK.png",
+                "name": "Good Fear",
+                "origin_country": "US"
+            },
+            {
+                "id": 89254,
+                "logo_path": null,
+                "name": "Jason T. Reed Productions",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "CN",
+                "name": "China"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-09-04",
+        "revenue": 57000000,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 120,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Mi deber es luchar.",
+        "title": "Mulán",
+        "video": false,
+        "videos": {
+            "results": [
+                {
+                    "id": "5f601be7ae28110039c6c831",
+                    "iso_3166_1": "MX",
+                    "iso_639_1": "es",
+                    "key": "1dnaQjFL67k",
+                    "name": "Mulán Tráiler Español Latino",
+                    "site": "YouTube",
+                    "size": 1080,
+                    "type": "Trailer"
+                }
+            ]
+        },
+        "vote_average": 7.2,
+        "vote_count": 3005
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/DA7gzvlBoxMNL0XmGgTZOyv67P.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 16,
+                "name": "Animación"
+            },
+            {
+                "id": 10751,
+                "name": "Familia"
+            },
+            {
+                "id": 35,
+                "name": "Comedia"
+            },
+            {
+                "id": 14,
+                "name": "Fantasía"
+            }
+        ],
+        "homepage": "https://disneyplusoriginals.disney.com/movie/once-upon-a-snowman",
+        "id": 741074,
+        "imdb_id": "tt13061790",
+        "original_language": "en",
+        "original_title": "Once Upon a Snowman",
+        "overview": "Los orígenes nunca antes contados de Olaf, el muñeco de nieve inocente y perspicaz, amante del verano, se revelan mientras seguimos sus primeros pasos cuando cobra vida y busca su identidad en las montañas nevadas de las afueras de Arendelle.",
+        "popularity": 558.898,
+        "poster_path": "/yckfWcCTKEplBCilRdE4d43xowl.jpg",
+        "production_companies": [
+            {
+                "id": 6125,
+                "logo_path": "/tVPmo07IHhBs4HuilrcV0yujsZ9.png",
+                "name": "Walt Disney Animation Studios",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-10-23",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 12,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Todo muñeco de nieve... inició en algún lugar.",
+        "title": "Érase una Vez un Muñeco de Nieve",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 6.8,
+        "vote_count": 172
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/6hgItrYQEG33y0I7yP2SRl2ei4w.jpg",
+        "belongs_to_collection": {
+            "backdrop_path": "/zZTy8G3sEVZNv0yGssgc7DvPUQJ.jpg",
+            "id": 702624,
+            "name": "After Collection",
+            "poster_path": "/oIcmMYCVrVUftMiO9tsniNnSNBc.jpg"
+        },
+        "budget": 0,
+        "genres": [
+            {
+                "id": 10749,
+                "name": "Romance"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "",
+        "id": 613504,
+        "imdb_id": "tt10362466",
+        "original_language": "en",
+        "original_title": "After We Collided",
+        "overview": "Ha pasado el tiempo, y Hardin (Hero Finnes Tiffin) todavía no se sabe si es realmente el chico profundo y reflexivo del que Tessa (Josephine Langford) se enamoró, o ha sido un extraño todo este tiempo. Ella quiere alejarse, pero no es tan fácil. Tessa se ha centrado en sus estudios y comienza a trabajar como becaria en Vance Publishing. Allí conoce a Trevor (Dylan Sprouse), un nuevo y atractivo compañero de trabajo que es exactamente el tipo de persona con la que debería estar. Pero Hardin sabe que cometió un error, posiblemente el más grande de su vida y quiere corregir sus errores y vencer a sus demonios... Secuela de la película 'After'.",
+        "popularity": 632.884,
+        "poster_path": "/5pg2rn4SM47B6Orc1xWXZ3MAVUc.jpg",
+        "production_companies": [
+            {
+                "id": 107107,
+                "logo_path": null,
+                "name": "CalMaple Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 6626,
+                "logo_path": "/A1BnMoWjzjOrjzpWimyBQkf84mS.png",
+                "name": "Voltage Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-09-02",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 105,
+        "spoken_languages": [
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Español"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "After: En mil pedazos",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 7.3,
+        "vote_count": 2095
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/aO5ILS7qnqtFIprbJ40zla0jhpu.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 53,
+                "name": "Suspense"
+            },
+            {
+                "id": 12,
+                "name": "Aventura"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            }
+        ],
+        "homepage": "https://xmovies8.app/",
+        "id": 741067,
+        "imdb_id": "tt10804786",
+        "original_language": "en",
+        "original_title": "Welcome to Sudden Death",
+        "overview": "Remake y secuela de la cinta Muerte súbita (1995), cinta estelarizada por Jean-Claude Van Damme, que sigue la historia de un antiguo oficial que, llevando a sus hijos a uno de los partidos de las finales del hockey profesional, se ve involucrado en una atentado terrorista durante el partido, el cual busca forzar la mano de un alto ejecutivo del gobierno para obtener una recompensa monetaria y política.",
+        "popularity": 631.219,
+        "poster_path": "/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
+        "production_companies": [],
+        "production_countries": [
+            {
+                "iso_3166_1": "CA",
+                "name": "Canada"
+            },
+            {
+                "iso_3166_1": "FR",
+                "name": "France"
+            },
+            {
+                "iso_3166_1": "JP",
+                "name": "Japan"
+            },
+            {
+                "iso_3166_1": "GB",
+                "name": "United Kingdom"
+            },
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-09-29",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 80,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "German",
+                "iso_639_1": "de",
+                "name": "Deutsch"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Welcome to Sudden Death",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 6.4,
+        "vote_count": 164
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg",
+        "belongs_to_collection": null,
+        "budget": 21000000,
+        "genres": [
+            {
+                "id": 80,
+                "name": "Crimen"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 9648,
+                "name": "Misterio"
+            }
+        ],
+        "homepage": "https://www.netflix.com/title/81277950",
+        "id": 497582,
+        "imdb_id": "tt7846844",
+        "original_language": "en",
+        "original_title": "Enola Holmes",
+        "overview": "Enola Holmes, la hermana menor de Sherlock, descubre que su madre ha desaparecido y se dispone a encontrarla. En su búsqueda, saca a relucir el sabueso que corre por sus venas y se encuentra con una conspiración que gira en torno a un misterioso lord, demostrando que su ilustre hermano no es el único talento en la familia.",
+        "popularity": 549.165,
+        "poster_path": "/8STWO9pUTqubPV04iXZ2R6SClME.jpg",
+        "production_companies": [
+            {
+                "id": 121424,
+                "logo_path": null,
+                "name": "PCMA Productions",
+                "origin_country": "US"
+            },
+            {
+                "id": 923,
+                "logo_path": "/5UQsZrfbfG2dYJbx8DxfoTr2Bvu.png",
+                "name": "Legendary Pictures",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-09-23",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 123,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Enola Holmes",
+        "video": false,
+        "videos": {
+            "results": [
+                {
+                    "id": "5f4513749652200036512110",
+                    "iso_3166_1": "MX",
+                    "iso_639_1": "es",
+                    "key": "bxG9VN9RrVs",
+                    "name": "Enola Holmes | Tráiler oficial | Netflix",
+                    "site": "YouTube",
+                    "size": 1080,
+                    "type": "Trailer"
+                }
+            ]
+        },
+        "vote_average": 7.5,
+        "vote_count": 2708
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/6C7ZGYeR8QpT3X6C2RFEu6yiSKK.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 10751,
+                "name": "Familia"
+            },
+            {
+                "id": 14,
+                "name": "Fantasía"
+            },
+            {
+                "id": 10402,
+                "name": "Música"
+            }
+        ],
+        "homepage": "https://www.netflix.com/title/80232043",
+        "id": 622855,
+        "imdb_id": "tt7736496",
+        "original_language": "en",
+        "original_title": "Jingle Jangle: A Christmas Journey",
+        "overview": "Un mundo imaginario cobra vida en una historia navideña de un excéntrico fabricante de juguetes, su nieta aventurera y un invento mágico que tiene el poder de cambiar sus vidas para siempre.",
+        "popularity": 531.103,
+        "poster_path": "/5RbyHIVydD3Krmec1LlUV7rRjet.jpg",
+        "production_companies": [
+            {
+                "id": 124805,
+                "logo_path": null,
+                "name": "260 Degrees Entertainment",
+                "origin_country": ""
+            },
+            {
+                "id": 21199,
+                "logo_path": "/freGVtYt766cJ6HollWKl8RO64a.png",
+                "name": "Brillstein Entertainment Partners",
+                "origin_country": "US"
+            },
+            {
+                "id": 53215,
+                "logo_path": null,
+                "name": "Get Lifted Film Company",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-11-06",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 119,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Jingle Jangle: Una mágica Navidad",
+        "video": false,
+        "videos": {
+            "results": [
+                {
+                    "id": "5fb2cd14229ae2003e42fbc7",
+                    "iso_3166_1": "MX",
+                    "iso_639_1": "es",
+                    "key": "9Iu7QbZuW-M",
+                    "name": "Jingle Jangle: Una mágica Navidad | Todo es posible | Tráiler oficial | Netflix",
+                    "site": "YouTube",
+                    "size": 1080,
+                    "type": "Trailer"
+                }
+            ]
+        },
+        "vote_average": 7.3,
+        "vote_count": 122
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/pq0JSpwyT2URytdFG0euztQPAyR.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            }
+        ],
+        "homepage": "http://legendessays.com/",
+        "id": 694919,
+        "imdb_id": "tt7286966",
+        "original_language": "en",
+        "original_title": "Money Plane",
+        "overview": "",
+        "popularity": 488.261,
+        "poster_path": "/v0BiswYPEZzZTYazvwktPTOTMpP.jpg",
+        "production_companies": [
+            {
+                "id": 92109,
+                "logo_path": "/1wOgBio7WGOskOAQ2aTvtCHAdm8.png",
+                "name": "Dawn's Light",
+                "origin_country": "US"
+            },
+            {
+                "id": 87067,
+                "logo_path": "/q9yy7dYaJX80lqEwpGb2rCdXwg0.png",
+                "name": "Taylor & Dodge",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-09-29",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 82,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Money Plane",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 5.8,
+        "vote_count": 194
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/h5sUE9jqoYrjsFjANJXL0gpZGye.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 53,
+                "name": "Suspense"
+            },
+            {
+                "id": 27,
+                "name": "Terror"
+            }
+        ],
+        "homepage": "",
+        "id": 624779,
+        "imdb_id": "tt9894470",
+        "original_language": "en",
+        "original_title": "VFW",
+        "overview": "Una noche típica para veteranos de la VFW (siglas en inglés para Veteranos de Guerras en el Extranjero) se convierte en una batalla total por la supervivencia cuando una adolescente desesperada corre al bar con una bolsa de drogas robadas. Una banda de punks violentos viene a buscarla, pero los veteranos usarán todas las armas a su disposición para proteger a la niña y a ellos mismos de un ataque implacable.",
+        "popularity": 511.535,
+        "poster_path": "/AnVD7Gn14uOTQhcc5xYZGQ9DRvS.jpg",
+        "production_companies": [
+            {
+                "id": 53472,
+                "logo_path": null,
+                "name": "Fangoria Films",
+                "origin_country": ""
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-10-14",
+        "revenue": 0,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 92,
+        "spoken_languages": [
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Español"
+            },
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "VFW (Veteranos de Guerras en el Extranjero)",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 5.1,
+        "vote_count": 15
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/eCIvqa3QVCx6H09bdeOS8Al2Sqy.jpg",
+        "belongs_to_collection": null,
+        "budget": 67000000,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 878,
+                "name": "Ciencia ficción"
+            },
+            {
+                "id": 27,
+                "name": "Terror"
+            },
+            {
+                "id": 12,
+                "name": "Aventura"
+            }
+        ],
+        "homepage": "https://www.foxmovies.com/movies/the-new-mutants",
+        "id": 340102,
+        "imdb_id": "tt4682266",
+        "original_language": "en",
+        "original_title": "The New Mutants",
+        "overview": "La historia de los Nuevos Mutantes, un equipo de héroes compuesto por los primeros graduados de la escuela de Charles Xavier.",
+        "popularity": 462.092,
+        "poster_path": "/pBWrc52L3NmJLMZwfLzmP61ZO3.jpg",
+        "production_companies": [
+            {
+                "id": 7505,
+                "logo_path": "/837VMM4wOkODc1idNxGT0KQJlej.png",
+                "name": "Marvel Entertainment",
+                "origin_country": "US"
+            },
+            {
+                "id": 127928,
+                "logo_path": "/qAh0Ofz47KVy0A3118rjHUx3usk.png",
+                "name": "20th Century Studios",
+                "origin_country": "US"
+            },
+            {
+                "id": 25,
+                "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+                "name": "20th Century Fox",
+                "origin_country": "US"
+            },
+            {
+                "id": 22213,
+                "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+                "name": "TSG Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-08-26",
+        "revenue": 45534613,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 98,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Français"
+            },
+            {
+                "english_name": "Spanish",
+                "iso_639_1": "es",
+                "name": "Español"
+            }
+        ],
+        "status": "Released",
+        "tagline": "Es hora de enfrentar a tus demonios",
+        "title": "Los Nuevos Mutantes",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 6.4,
+        "vote_count": 847
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/54yOImQgj8i85u9hxxnaIQBRUuo.jpg",
+        "belongs_to_collection": null,
+        "budget": 0,
+        "genres": [
+            {
+                "id": 28,
+                "name": "Acción"
+            },
+            {
+                "id": 80,
+                "name": "Crimen"
+            },
+            {
+                "id": 18,
+                "name": "Drama"
+            },
+            {
+                "id": 53,
+                "name": "Suspense"
+            }
+        ],
+        "homepage": "http://legendessays.com/",
+        "id": 539885,
+        "imdb_id": "tt8784956",
+        "original_language": "en",
+        "original_title": "Ava",
+        "overview": "Ava es una mortífera asesina a sueldo que trabaja para una organización de operaciones encubiertas, que viaja por todo el mundo acabando con aquellos objetivos que nadie más puede derribar. Cuando uno de sus encargos sale mal, Ava tendrá que luchar por una vida.",
+        "popularity": 509.219,
+        "poster_path": "/qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg",
+        "production_companies": [
+            {
+                "id": 83210,
+                "logo_path": null,
+                "name": "Freckles Films",
+                "origin_country": "US"
+            },
+            {
+                "id": 6626,
+                "logo_path": "/A1BnMoWjzjOrjzpWimyBQkf84mS.png",
+                "name": "Voltage Pictures",
+                "origin_country": "US"
+            },
+            {
+                "id": 88606,
+                "logo_path": null,
+                "name": "Vertical Entertainment",
+                "origin_country": "US"
+            }
+        ],
+        "production_countries": [
+            {
+                "iso_3166_1": "US",
+                "name": "United States of America"
+            }
+        ],
+        "release_date": "2020-07-02",
+        "revenue": 2987741,
+        "reviews": {
+            "page": 1,
+            "results": [
+                {
+                    "id": "1",
+                    "author": "MIGUEL ANGEL CARDONA ROJO",
+                    "content": "Muy buena peli"
+                },
+                {
+                    "id": "2",
+                    "author": "ANTONIO ARES MACHADO",
+                    "content": "divertida"
+                },
+                {
+                    "id": "3",
+                    "author": "JULIA QUINTERO JARA",
+                    "content": "me encanto"
+                }
+            ],
+            "total_pages": 0,
+            "total_results": 0
+        },
+        "runtime": 96,
+        "spoken_languages": [
+            {
+                "english_name": "English",
+                "iso_639_1": "en",
+                "name": "English"
+            },
+            {
+                "english_name": "French",
+                "iso_639_1": "fr",
+                "name": "Français"
+            },
+            {
+                "english_name": "German",
+                "iso_639_1": "de",
+                "name": "Deutsch"
+            }
+        ],
+        "status": "Released",
+        "tagline": "",
+        "title": "Ava",
+        "video": false,
+        "videos": {
+            "results": []
+        },
+        "vote_average": 5.6,
+        "vote_count": 662
+    }
+]
