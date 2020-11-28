@@ -25,7 +25,8 @@ def _users_hard() -> List[User]:
                     expiration='02/2025'
                 )
             ],
-            discounts=discount_repository.todos_los_discount()
+            discounts=discount_repository.todos_los_discount(),
+            id=UUID("225ad38f-9edf-4c20-bab0-9805705dfe46")
         )
     ]
 

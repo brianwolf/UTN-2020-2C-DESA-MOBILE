@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
-		"name": "utn-2020-2c-desa-mobile-v0.4.0",
+		"name": "utn-2020-2c-desa-mobile-v0.5.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -245,48 +245,6 @@
 									"response": []
 								},
 								{
-									"name": "loguearse",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);",
-													"pm.collectionVariables.set(\"token\", jsonData.token);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/api/v1/users/login",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"users",
-												"login"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "todos los logueados",
 									"request": {
 										"method": "GET",
@@ -409,7 +367,7 @@
 									"response": []
 								},
 								{
-									"name": "asignar por token",
+									"name": "asignar a usuario por token",
 									"event": [
 										{
 											"listen": "test",
@@ -524,42 +482,12 @@
 									"response": []
 								},
 								{
-									"name": "los mas cercanos",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{url}}/api/v1/cinemas/closest?latitude=-34.6160666&longitude=-58.4216017",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"cinemas",
-												"closest"
-											],
-											"query": [
-												{
-													"key": "latitude",
-													"value": "-34.6160666"
-												},
-												{
-													"key": "longitude",
-													"value": "-58.4216017"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "buscar",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/c2dcce86-b12e-43eb-9e6d-6261661e0a6b",
+											"raw": "{{url}}/api/v1/cinemas/058c3e48-5581-4381-b6f1-84857f0d535e",
 											"host": [
 												"{{url}}"
 											],
@@ -567,7 +495,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"c2dcce86-b12e-43eb-9e6d-6261661e0a6b"
+												"058c3e48-5581-4381-b6f1-84857f0d535e"
 											]
 										}
 									},
@@ -595,33 +523,12 @@
 									"response": []
 								},
 								{
-									"name": "buscar imagen",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{url}}/api/v1/cinemas/17a90ac3-2318-4943-a340-a33a17e2d2ca/img",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"cinemas",
-												"17a90ac3-2318-4943-a340-a33a17e2d2ca",
-												"img"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "horarios",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/c2dcce86-b12e-43eb-9e6d-6261661e0a6b/timetables",
+											"raw": "{{url}}/api/v1/cinemas/058c3e48-5581-4381-b6f1-84857f0d535e/timetables",
 											"host": [
 												"{{url}}"
 											],
@@ -629,7 +536,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"c2dcce86-b12e-43eb-9e6d-6261661e0a6b",
+												"058c3e48-5581-4381-b6f1-84857f0d535e",
 												"timetables"
 											]
 										}
@@ -642,7 +549,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/40cd3478-a862-4d5f-bdf9-e611488d99b7/timetables/15:00:00/places",
+											"raw": "{{url}}/api/v1/cinemas/d518e6d7-0c4f-4e93-be88-96355053e530/timetables/places?movie_id=622855&movie_date=2020-12-06&movie_time=23:00:00",
 											"host": [
 												"{{url}}"
 											],
@@ -650,22 +557,35 @@
 												"api",
 												"v1",
 												"cinemas",
-												"40cd3478-a862-4d5f-bdf9-e611488d99b7",
+												"d518e6d7-0c4f-4e93-be88-96355053e530",
 												"timetables",
-												"15:00:00",
 												"places"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												},
+												{
+													"key": "movie_date",
+													"value": "2020-12-06"
+												},
+												{
+													"key": "movie_time",
+													"value": "23:00:00"
+												}
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "butacas disponibles",
+									"name": "1.1 - los mas cercanos",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/f27db908-db46-436c-bae8-3ce0256bfdd0/timetables/15:00:00/places/enables",
+											"raw": "{{url}}/api/v1/cinemas/closest/latitude/-34.6160666/longitude/-68.4216017?movie_id=622855",
 											"host": [
 												"{{url}}"
 											],
@@ -673,11 +593,172 @@
 												"api",
 												"v1",
 												"cinemas",
-												"f27db908-db46-436c-bae8-3ce0256bfdd0",
-												"timetables",
-												"15:00:00",
-												"places",
-												"enables"
+												"closest",
+												"latitude",
+												"-34.6160666",
+												"longitude",
+												"-68.4216017"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1.2 - buscar imagen",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/2b225f55-df58-428b-8e2b-8d6c5981faed/img",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"2b225f55-df58-428b-8e2b-8d6c5981faed",
+												"img"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.1 - dias",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/2d48cd59-a307-41b7-9b34-9c286dec0026/dates?movie_id=622855",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"2d48cd59-a307-41b7-9b34-9c286dec0026",
+												"dates"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.2 - horarios",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/2d48cd59-a307-41b7-9b34-9c286dec0026/times?movie_id=622855&movie_date=2020-12-06",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"2d48cd59-a307-41b7-9b34-9c286dec0026",
+												"times"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												},
+												{
+													"key": "movie_date",
+													"value": "2020-12-06"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2.3 - salas",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/2b225f55-df58-428b-8e2b-8d6c5981faed/rooms?movie_id=622855&movie_date=2020-12-06&movie_time=23:00:00",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"2b225f55-df58-428b-8e2b-8d6c5981faed",
+												"rooms"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												},
+												{
+													"key": "movie_date",
+													"value": "2020-12-06"
+												},
+												{
+													"key": "movie_time",
+													"value": "23:00:00"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3 - butacas disponibles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/cinemas/2b225f55-df58-428b-8e2b-8d6c5981faed/seats/enables/ids?movie_id=622855&movie_date=2020-12-06&movie_time=23:00:00&room=1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"cinemas",
+												"2b225f55-df58-428b-8e2b-8d6c5981faed",
+												"seats",
+												"enables",
+												"ids"
+											],
+											"query": [
+												{
+													"key": "movie_id",
+													"value": "622855"
+												},
+												{
+													"key": "movie_date",
+													"value": "2020-12-06"
+												},
+												{
+													"key": "movie_time",
+													"value": "23:00:00"
+												},
+												{
+													"key": "room",
+													"value": "1"
+												}
 											]
 										}
 									},
@@ -691,7 +772,7 @@
 							"name": "tickets",
 							"item": [
 								{
-									"name": "todos los boletos comprados",
+									"name": "todos",
 									"request": {
 										"method": "GET",
 										"header": [],
@@ -742,7 +823,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"id_movie\": 528085,\n    \"id_cinema\": \"58c905a5-f15b-43f9-bc86-299c03df3953\",\n    \"movie_time\": \"15:00:00\",\n    \"places\": [\n        \"B1\",\n        \"B2\",\n        \"B3\"\n    ],\n    \"discounts\": [\n        \"722800e7-9546-4095-b6c2-c40fd4f06e76\"\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
+											"raw": "{\n    \"movie_id\": 622855,\n    \"cinema_id\": \"7f55a7f0-10a8-48f2-a4fa-49cc48d0589c\",\n    \"movie_date\": \"2020-12-06\",\n    \"movie_time\": \"23:00:00\",\n    \"room\": 1,\n    \"seats\": [\n        1,\n        2,\n        3\n    ],\n    \"discounts\": [\n        \"c2a8340e-6468-483d-a40a-56129c03bb43\"\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -773,6 +854,95 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "movies",
+							"item": [
+								{
+									"name": "populares",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/movies/populars",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"movies",
+												"populars"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "detalles",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/api/v1/movies/682377",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"movies",
+												"682377"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "loguearse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.collectionVariables.set(\"token\", jsonData.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -862,7 +1032,7 @@
 							"name": "themoviedb",
 							"item": [
 								{
-									"name": "themoviedb",
+									"name": "popular",
 									"request": {
 										"method": "GET",
 										"header": [],
@@ -877,6 +1047,54 @@
 												"themoviedb",
 												"movie",
 												"popular"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "details",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/proxy/v1/themoviedb/movie/682377",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"proxy",
+												"v1",
+												"themoviedb",
+												"movie",
+												"682377"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "details Copy",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/proxy/v1/themoviedb/movie/531219?append_to_response=videos,reviews",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"proxy",
+												"v1",
+												"themoviedb",
+												"movie",
+												"531219"
+											],
+											"query": [
+												{
+													"key": "append_to_response",
+													"value": "videos,reviews"
+												}
 											]
 										}
 									},
@@ -918,27 +1136,27 @@
 	],
 	"variable": [
 		{
-			"id": "51fbc601-294e-48d9-b0bc-6c538551efc2",
+			"id": "f4617209-4e96-449a-96ec-38bfdbcfd543",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "0d1dc94e-d3b6-4195-ab21-393fbc74a977",
+			"id": "47276618-d6a9-43ee-a7bf-a2e51b6a0b6a",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "b7fb62cb-2ece-4f94-8829-4e83830d656d",
+			"id": "f72ca6f0-de7f-4738-abf5-76a2dbae8cbd",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		},
 		{
-			"id": "bc7cf5c2-d377-4555-bb83-48f13a3cced8",
+			"id": "d33425d1-24d6-42e3-ac93-d9f235c57492",
 			"key": "id_descuento_100_pe",
 			"value": ""
 		},
 		{
-			"id": "7faaf1a0-dddf-45e0-a40c-fb496d225503",
+			"id": "391073bd-bf82-4022-89fd-1e00bbab4e36",
 			"key": "id_descuento_10_por",
 			"value": ""
 		}

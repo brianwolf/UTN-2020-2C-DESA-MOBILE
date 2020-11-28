@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from datetime import datetime, time
+from datetime import date, datetime, time
 from typing import List
 from uuid import UUID, uuid4
 
@@ -24,8 +24,8 @@ class Location(object):
 
 
 @dataclass
-class Place(object):
-    name: str
+class Seat(object):
+    id: int = None
     enable: bool = True
 
     def __eq__(self, other):
@@ -35,27 +35,36 @@ class Place(object):
         return self.__dict__.copy()
 
     @staticmethod
-    def from_json(d: dict) -> 'Place':
-        return Place(
-            name=d.get('name'),
+    def from_json(d: dict) -> 'Seat':
+
+        id = int(d.get('id')) if 'id' in d else None
+
+        return Seat(
+            id=id,
             enable=bool(d.get('enable', True))
         )
 
 
 @dataclass
 class Timetable(object):
+    movie_id: int
+    movie_date: date
     movie_time: time
-    places: List[Place]
+    room: int
+    seats: List[Seat]
     price: float = 0
 
     def __eq__(self, other):
-        return self.movie_time == other.movie_time
+        return self.movie_time == other.movie_time and self.movie_id == other.movie_id and self.movie_date == other.movie_date
 
     def to_json(self) -> dict:
         return {
+            'movie_id': self.movie_id,
+            'movie_date': self.movie_date.isoformat(),
             'movie_time': self.movie_time.isoformat(),
-            'places': [o.to_json() for o in self.places],
-            'price': str(self.price)
+            'seats': [o.to_json() for o in self.seats],
+            'price': str(self.price),
+            'room': self.room
         }
 
     @staticmethod
@@ -64,23 +73,29 @@ class Timetable(object):
         movie_time = time.fromisoformat(
             d.get('movie_time')) if 'movie_time' in d else datetime.now().time()
 
+        movie_date = date.fromisoformat(
+            d.get('movie_date')) if 'movie_date' in d else datetime.now().date()
+
         return Timetable(
+            movie_id=d.get('movie_id'),
+            movie_date=movie_date,
             movie_time=movie_time,
-            places=[Place.from_json(d) for d in d.get('places')],
-            price=float(d.get('price', 0))
+            seats=[Seat.from_json(d) for d in d.get('seats')],
+            price=float(d.get('price', 0)),
+            room=int(d.get('room', 0))
         )
 
-    def ocupar_place(self, place_name: str):
+    def ocupar_seat(self, seat_id: int):
 
         butacas_elegidas = list(
-            filter(lambda p: p.name == place_name, self.places))
+            filter(lambda p: p.id == seat_id, self.seats))
 
         butacas_elegidas_ocupadas = [
             p for p in butacas_elegidas
             if not p.enable
         ]
         if butacas_elegidas_ocupadas:
-            msj = f'La butaca {place_name} esta ocupada'
+            msj = f'La butaca {seat_id} esta ocupada'
             raise AppException(codigo=CinemaErrors.BUTACA_OCUPADA, mensaje=msj)
 
         for p in butacas_elegidas:
@@ -88,14 +103,50 @@ class Timetable(object):
 
 
 @dataclass
+class TimeTablesFilters(object):
+    movie_id: int = None
+    movie_date: date = None
+    movie_time: date = None
+    room: int = None
+
+    def to_json(self) -> dict:
+        return {
+            'movie_id': self.movie_id,
+            'movie_date': self.movie_date.isoformat if self.movie_date else None,
+            'movie_time': self.movie_time.isoformat if self.movie_time else None,
+            'room': self.room if self.room else None,
+        }
+
+    @staticmethod
+    def from_json(d: dict) -> 'TimeTablesFilters':
+
+        movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
+
+        movie_date = date.fromisoformat(
+            d.get('movie_date')) if 'movie_date' in d else None
+
+        movie_time = time.fromisoformat(
+            d.get('movie_time')) if 'movie_time' in d else None
+
+        room = int(d.get('room')) if 'room' in d else None
+
+        return TimeTablesFilters(
+            movie_id=movie_id,
+            movie_date=movie_date,
+            movie_time=movie_time,
+            room=room
+        )
+
+
+@dataclass
 class Cinema(object):
-    name: str
-    adress: str
-    description: str
-    stars: float
-    location: Location
-    image_path: str
-    timetables: List[Timetable]
+    name: str = None
+    adress: str = None
+    description: str = None
+    stars: float = None
+    location: Location = None
+    image_path: str = None
+    timetables: List[Timetable] = None
     id: UUID = field(default_factory=uuid4)
 
     def __eq__(self, other):
@@ -133,7 +184,24 @@ class Cinema(object):
         with open(self.image_path, 'rb') as archivo:
             return archivo.read()
 
-    def buscar_time_table(self, movie_time: time) -> Timetable:
-        resultado = list(filter(lambda tt: tt.movie_time ==
-                                movie_time, self.timetables))
-        return resultado[0] if resultado else None
+    def timetables_por_filters(self, filters: TimeTablesFilters = TimeTablesFilters()) -> List[Timetable]:
+
+        resultado = self.timetables
+
+        if filters.movie_id:
+            resultado = filter(lambda tt: tt.movie_id ==
+                               filters.movie_id, resultado)
+
+        if filters.movie_date:
+            resultado = filter(lambda tt: tt.movie_date ==
+                               filters.movie_date, resultado)
+
+        if filters.movie_time:
+            resultado = filter(lambda tt: tt.movie_time ==
+                               filters.movie_time, resultado)
+
+        if filters.room:
+            resultado = filter(lambda tt: tt.room ==
+                               filters.room, resultado)
+
+        return list(resultado)

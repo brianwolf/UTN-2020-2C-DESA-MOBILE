@@ -14,10 +14,10 @@ _DB: List[Discount] = []
 
 def _discounts_hard() -> List[Discount]:
 
-    id_1 = uuid4()
-    id_2 = uuid4()
-    id_3 = uuid4()
-    id_4 = uuid4()
+    id_1 = UUID("c2a8340e-6468-483d-a40a-56129c03bb43")
+    id_2 = UUID("88a40d95-f0b8-4447-98e4-3f71e83bccca")
+    id_3 = UUID("f9b28b66-6d7e-4a09-b045-44896c7a88f4")
+    id_4 = UUID("08cbc498-caa3-4e68-ad6e-f002979ed93d")
 
     return [
         Discount(

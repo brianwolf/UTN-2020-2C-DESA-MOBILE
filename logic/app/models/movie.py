@@ -10,7 +10,7 @@ class TicketIn(object):
     id_user: UUID
     id_cinema: UUID
     movie_time: str
-    places: List[str]
+    seats: List[str]
     discounts: List[UUID]
     credit_card_number: str
 
@@ -22,7 +22,7 @@ class TicketIn(object):
             'id_user': str(self.id_user),
             'id_cinema': str(self.id_cinema),
             'movie_time': self.movie_time,
-            'places': self.places,
+            'seats': self.seats,
             'discounts': [str(d) for d in self.discounts],
             'credit_card_number': self.credit_card_number
         }
@@ -34,7 +34,7 @@ class TicketIn(object):
             id_user=UUID(d['id_user']),
             id_cinema=UUID(d['id_cinema']),
             movie_time=d['movie_time'],
-            palces=d['places'],
+            palces=d['seats'],
             discounts=[UUID(u) for u in d['discounts']],
             credit_card_number=d['credit_card_number']
         )
@@ -45,7 +45,7 @@ class TicketOut(object):
     id_user: UUID
     id_cinema: UUID
     movie_time: str
-    places: List[str]
+    seats: List[str]
     discounts: List[UUID]
     credit_card_number: str
 
@@ -57,7 +57,7 @@ class TicketOut(object):
             'id_user': str(self.id_user),
             'id_cinema': str(self.id_cinema),
             'movie_time': self.movie_time,
-            'places': self.places,
+            'seats': self.seats,
             'discounts': [str(d) for d in self.discounts],
             'credit_card_number': self.credit_card_number
         }
@@ -69,7 +69,7 @@ class TicketOut(object):
             id_user=UUID(d['id_user']),
             id_cinema=UUID(d['id_cinema']),
             movie_time=d['movie_time'],
-            palces=d['places'],
+            palces=d['seats'],
             discounts=[UUID(u) for u in d['discounts']],
             credit_card_number=d['credit_card_number']
         )
