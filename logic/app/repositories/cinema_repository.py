@@ -21,7 +21,7 @@ def _cinemas_hard() -> List[Cinema]:
 
     seats = [
         Seat(id=i, enable=True)
-        for i in range(1, 10)
+        for i in range(1, 11)
     ]
 
     t_1 = time(hour=12)
