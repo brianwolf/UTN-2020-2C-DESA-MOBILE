@@ -149,12 +149,12 @@ def buscar_cinema_timetables_seats_enables(id: str):
     list_seats = [
         tt.seats
         for tt in cinema.timetables_por_filters(filters)
-        if filter(lambda e: e.enable, tt.seats)
     ]
 
     ids = [
         s.id
         for s in sum(list_seats, [])
+        if s.enable
     ]
 
     return jsonify(ids), 200
