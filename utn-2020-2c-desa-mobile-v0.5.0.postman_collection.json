@@ -245,48 +245,6 @@
 									"response": []
 								},
 								{
-									"name": "loguearse",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);",
-													"pm.collectionVariables.set(\"token\", jsonData.token);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/api/v1/users/login",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"users",
-												"login"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "todos los logueados",
 									"request": {
 										"method": "GET",
@@ -409,7 +367,7 @@
 									"response": []
 								},
 								{
-									"name": "asignar por token",
+									"name": "asignar a usuario por token",
 									"event": [
 										{
 											"listen": "test",
@@ -678,7 +636,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/2b225f55-df58-428b-8e2b-8d6c5981faed/dates?movie_id=622855",
+											"raw": "{{url}}/api/v1/cinemas/2d48cd59-a307-41b7-9b34-9c286dec0026/dates?movie_id=622855",
 											"host": [
 												"{{url}}"
 											],
@@ -686,7 +644,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"2b225f55-df58-428b-8e2b-8d6c5981faed",
+												"2d48cd59-a307-41b7-9b34-9c286dec0026",
 												"dates"
 											],
 											"query": [
@@ -705,7 +663,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/2b225f55-df58-428b-8e2b-8d6c5981faed/times?movie_id=622855&movie_date=2020-12-06",
+											"raw": "{{url}}/api/v1/cinemas/2d48cd59-a307-41b7-9b34-9c286dec0026/times?movie_id=622855&movie_date=2020-12-06",
 											"host": [
 												"{{url}}"
 											],
@@ -713,7 +671,7 @@
 												"api",
 												"v1",
 												"cinemas",
-												"2b225f55-df58-428b-8e2b-8d6c5981faed",
+												"2d48cd59-a307-41b7-9b34-9c286dec0026",
 												"times"
 											],
 											"query": [
@@ -814,7 +772,7 @@
 							"name": "tickets",
 							"item": [
 								{
-									"name": "todos los boletos comprados",
+									"name": "todos",
 									"request": {
 										"method": "GET",
 										"header": [],
@@ -865,7 +823,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"id_movie\": 528085,\n    \"id_cinema\": \"58c905a5-f15b-43f9-bc86-299c03df3953\",\n    \"movie_time\": \"15:00:00\",\n    \"places\": [\n        \"B1\",\n        \"B2\",\n        \"B3\"\n    ],\n    \"discounts\": [\n        \"722800e7-9546-4095-b6c2-c40fd4f06e76\"\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
+											"raw": "{\n    \"movie_id\": 622855,\n    \"cinema_id\": \"7f55a7f0-10a8-48f2-a4fa-49cc48d0589c\",\n    \"movie_date\": \"2020-12-06\",\n    \"movie_time\": \"23:00:00\",\n    \"room\": 1,\n    \"seats\": [\n        1,\n        2,\n        3\n    ],\n    \"discounts\": [\n        \"c2a8340e-6468-483d-a40a-56129c03bb43\"\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -943,6 +901,48 @@
 							],
 							"protocolProfileBehavior": {},
 							"_postman_isSubFolder": true
+						},
+						{
+							"name": "loguearse",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b16e7981-4264-4a01-a1e9-644b62b537eb",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.collectionVariables.set(\"token\", jsonData.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"admin\",\n    \"password\": \"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1136,27 +1136,27 @@
 	],
 	"variable": [
 		{
-			"id": "b5efbeab-3c3c-4c5c-b2de-3d7bb7be84ce",
+			"id": "f4617209-4e96-449a-96ec-38bfdbcfd543",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "f5742fd1-cec3-4976-9102-1c14090fe0b6",
+			"id": "47276618-d6a9-43ee-a7bf-a2e51b6a0b6a",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "310cc1e4-8871-4332-af31-9473c8f9284d",
+			"id": "f72ca6f0-de7f-4738-abf5-76a2dbae8cbd",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		},
 		{
-			"id": "55dc5ce7-022a-4953-963d-6fd72c41ec4a",
+			"id": "d33425d1-24d6-42e3-ac93-d9f235c57492",
 			"key": "id_descuento_100_pe",
 			"value": ""
 		},
 		{
-			"id": "e2b8959b-4153-4085-8bbc-29a42976bf48",
+			"id": "391073bd-bf82-4022-89fd-1e00bbab4e36",
 			"key": "id_descuento_10_por",
 			"value": ""
 		}

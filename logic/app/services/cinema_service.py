@@ -1,10 +1,10 @@
 import math
 import os
-from datetime import time
+from datetime import date, time
 from typing import List
 from uuid import UUID, uuid4
 
-from logic.app.models.cinema import Cinema, TimeTablesFilters, Location
+from logic.app.models.cinema import Cinema, Location, TimeTablesFilters
 from logic.app.repositories import cinema_repository
 
 
@@ -50,12 +50,25 @@ def buscar_cinema(id: UUID) -> Cinema:
     return cinema_repository.buscar_cinema(id)
 
 
-def ocupar_seats(id_cinema: UUID, movie_time: time, seats_name: List[int]):
-    cinema = buscar_cinema(id_cinema)
-    time_table = cinema.buscar_time_table(movie_time)
+def ocupar_seats(cinema_id: UUID, filters: TimeTablesFilters,  seats_ids: List[int]):
 
-    for pn in seats_name:
-        time_table.ocupar_place(pn)
+    cinema = buscar_cinema(cinema_id)
+    time_table = cinema.timetables_por_filters(filters)
 
-    borrar_cinema(id_cinema)
+    if len(time_table) != 1:
+        # TODO mejorar excepcion
+        raise Exception(
+            'Error en buscar horarios que coincidan con lo pedido dentro del cine')
+
+    time_table = time_table[0]
+
+    if list(filter(lambda s: s.id in seats_ids and not s.enable, time_table.seats)):
+        # TODO mejorar excepcion
+        raise Exception(
+            'hay butacas seleccionadas que estan ocupadas')
+
+    for s_id in seats_ids:
+        time_table.ocupar_seat(s_id)
+
+    borrar_cinema(cinema_id)
     guardar_cinema(cinema)

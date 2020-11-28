@@ -35,6 +35,7 @@ def buscar_user(id: UUID) -> User:
 
 
 def borrar_descuento(id: UUID, id_discount: UUID):
+
     user = buscar_user(id)
     user.discounts.remove(DiscountUser(id=id_discount))
 

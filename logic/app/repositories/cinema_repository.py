@@ -76,7 +76,7 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.377785),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/monumental.jpg',
             timetables=timetables,
-            id=uuid4()
+            id=UUID("7f55a7f0-10a8-48f2-a4fa-49cc48d0589c")
         ),
         Cinema(
             name='Gaumont',
@@ -87,7 +87,7 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.3896579),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/gaumont.jpg',
             timetables=timetables,
-            id=uuid4()
+            id=UUID("0c5d04cd-5582-4113-bfe1-e17fc39dbceb")
         ),
         Cinema(
             name='Hoyts Abasto',
@@ -98,7 +98,7 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.4108409),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/hoyts.jpg',
             timetables=timetables,
-            id=uuid4()
+            id=UUID("6ac18d0f-5581-4024-a0ca-e26ca435e66a")
         )
     ]
 

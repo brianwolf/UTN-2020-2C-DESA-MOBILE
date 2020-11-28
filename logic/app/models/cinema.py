@@ -85,17 +85,17 @@ class Timetable(object):
             room=int(d.get('room', 0))
         )
 
-    def ocupar_place(self, place_name: str):
+    def ocupar_seat(self, seat_id: int):
 
         butacas_elegidas = list(
-            filter(lambda p: p.name == place_name, self.seats))
+            filter(lambda p: p.id == seat_id, self.seats))
 
         butacas_elegidas_ocupadas = [
             p for p in butacas_elegidas
             if not p.enable
         ]
         if butacas_elegidas_ocupadas:
-            msj = f'La butaca {place_name} esta ocupada'
+            msj = f'La butaca {seat_id} esta ocupada'
             raise AppException(codigo=CinemaErrors.BUTACA_OCUPADA, mensaje=msj)
 
         for p in butacas_elegidas:
@@ -204,4 +204,4 @@ class Cinema(object):
             resultado = filter(lambda tt: tt.room ==
                                filters.room, resultado)
 
-        return resultado
+        return list(resultado)
