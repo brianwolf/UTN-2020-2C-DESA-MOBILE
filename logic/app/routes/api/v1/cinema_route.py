@@ -3,7 +3,7 @@ from io import BytesIO
 from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
-from logic.app.models.cinema import Location, Place
+from logic.app.models.cinema import Location, Place, CinemaFilters
 from logic.app.routes.api.v1.mappers import cinema_mapper
 from logic.app.services import cinema_service
 
@@ -30,28 +30,17 @@ def buscar_cinema(id: str):
     return jsonify(cinema_mapper.cinema_to_json_short(cinema)), 200
 
 
-@blue_print.route('/closest', methods=['GET'])
-def todos_los_cinema_mas_cercano():
+@blue_print.route('/closest/latitude/<latitude>/longitude/<longitude>', methods=['GET'])
+def todos_los_cinema_mas_cercano(latitude: str, longitude: str):
 
-    movie_id = int(request.args.get('movie')
-                   ) if 'movie' in request.args else None
+    filters = CinemaFilters.from_json(request.args)
 
-    longitude = float(request.args.get('longitude'))
-    latitude = float(request.args.get('latitude'))
+    location = Location(longitude=float(longitude), latitude=float(latitude))
 
-    location = Location(longitude=longitude, latitude=latitude)
+    cinemas = cinema_service.todos_los_cinema_mas_cercano(
+        location, filters=filters)
 
-    json_cinemas = []
-    for c in cinema_service.todos_los_cinema_mas_cercano(location, movie_id=movie_id):
-
-        j = c.to_json()
-        j.pop('location')
-        j.pop('image_path')
-        j.pop('timetables')
-
-        json_cinemas.append(j)
-
-    return jsonify(json_cinemas), 200
+    return jsonify([cinema_mapper.cinema_to_json_short(c) for c in cinemas]), 200
 
 
 @blue_print.route('/<id>/full', methods=['GET'])

@@ -18,8 +18,10 @@ def todos_los_cinema_por_filtros(filters: CinemaFilters = CinemaFilters()) -> Li
 
     if filters.movie_id:
 
-        def estrena_esa_peli(tt): return tt.movie_id == filters.movie_id
-        def cine_tiene_peli(c): return filter(estrena_esa_peli, c.timetables)
+        def cine_tiene_peli(c): return any(filter(
+            lambda tt: tt.movie_id == filters.movie_id,
+            c.timetables
+        ))
 
         cines = filter(cine_tiene_peli, cines)
 

@@ -165,6 +165,6 @@ class CinemaFilters(object):
 
         movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
 
-        return Cinema(
+        return CinemaFilters(
             movie_id=movie_id
         )
