@@ -1,9 +1,9 @@
-from datetime import time
+from datetime import date, time
 from io import BytesIO
 from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
-from logic.app.models.cinema import Location, Place, CinemaFilters
+from logic.app.models.cinema import CinemaFilters, Location, Place
 from logic.app.routes.api.v1.mappers import cinema_mapper
 from logic.app.services import cinema_service
 
@@ -77,14 +77,30 @@ def buscar_cinema_imgagen(id: str):
 @blue_print.route('/<id>/timetables', methods=['GET'])
 def buscar_cinema_timetables(id: str):
 
-    cinemas = cinema_service.buscar_cinema(UUID(id))
-    if cinemas is None:
+    filters = CinemaFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
         return '', 204
 
-    result = [t.to_json() for t in cinemas.timetables]
-    result = [t.pop('movie_time') for t in result]
+    return jsonify([t.to_json() for t in cinema.timetables_por_filters(filters)]), 200
 
-    return jsonify(result), 200
+
+@blue_print.route('/<id>/timetables/dates', methods=['GET'])
+def buscar_cinema_dates(id: str):
+
+    filters = CinemaFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
+        return '', 204
+
+    dates = [
+        tt.movie_date
+        for tt in cinema.timetables_por_filters(filters)
+    ]
+
+    return jsonify(dates), 200
 
 
 @blue_print.route('/<id>/timetables/<movie_time>/places', methods=['GET'])

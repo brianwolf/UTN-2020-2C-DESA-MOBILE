@@ -100,6 +100,25 @@ class Timetable(object):
 
 
 @dataclass
+class CinemaFilters(object):
+    movie_id: int = None
+
+    def to_json(self) -> dict:
+        return {
+            'movie_id': self.movie_id
+        }
+
+    @staticmethod
+    def from_json(d: dict) -> 'CinemaFilters':
+
+        movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
+
+        return CinemaFilters(
+            movie_id=movie_id
+        )
+
+
+@dataclass
 class Cinema(object):
     name: str = None
     adress: str = None
@@ -145,26 +164,12 @@ class Cinema(object):
         with open(self.image_path, 'rb') as archivo:
             return archivo.read()
 
-    def buscar_time_table(self, movie_time: time) -> Timetable:
-        resultado = list(filter(lambda tt: tt.movie_time ==
-                                movie_time, self.timetables))
-        return resultado[0] if resultado else None
+    def timetables_por_filters(self, filters: CinemaFilters = CinemaFilters()) -> List[Timetable]:
 
+        resultado = self.timetables
 
-@dataclass
-class CinemaFilters(object):
-    movie_id: int = None
+        if filters.movie_id:
+            resultado = filter(lambda tt: tt.movie_id ==
+                               filters.movie_id, resultado)
 
-    def to_json(self) -> dict:
-        return {
-            'movie_id': self.movie_id
-        }
-
-    @staticmethod
-    def from_json(d: dict) -> 'CinemaFilters':
-
-        movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
-
-        return CinemaFilters(
-            movie_id=movie_id
-        )
+        return resultado
