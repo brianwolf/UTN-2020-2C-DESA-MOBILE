@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 
 from flask import (Blueprint, Request, jsonify, render_template, request,
                    send_file)
-from logic.app.models.cinema import Place
+from logic.app.models.cinema import Seat
 from logic.app.models.user import DiscountUser, User
 from logic.app.routes.api.v1.mappers import discount_mapper
 from logic.app.services import discount_service, user_service

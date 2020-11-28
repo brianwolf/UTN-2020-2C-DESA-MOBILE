@@ -70,7 +70,7 @@ class User(object):
     creditCars: List[CreditCard] = field(default_factory=list)
     last_conection: datetime = datetime.now()
     discounts: List[DiscountUser] = field(default_factory=list)
-    id: UUID = uuid4()
+    id: UUID = field(default_factory=uuid4)
 
     def __eq__(self, other):
         return self.id == other.id

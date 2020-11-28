@@ -1,11 +1,12 @@
 import json
 import os.path
-from datetime import time
+from datetime import date, time, timedelta
 from typing import List
 from uuid import UUID, uuid4
 
 from logic.app.configs import config
-from logic.app.models.cinema import Cinema, Location, Place, Timetable
+from logic.app.models.cinema import Cinema, Location, Seat, Timetable
+from logic.app.repositories import movie_repository
 
 _DIRECOTRIO_JSON: str = f'{config.DIRECTORIO_DB}/cinema.json'
 _DB: List[Cinema] = []
@@ -13,16 +14,57 @@ _DB: List[Cinema] = []
 
 def _cinemas_hard() -> List[Cinema]:
 
-    places = []
-    for i in range(1, 30):
-        places.append(Place(name=f'B{i}', enable=True))
-    for i in range(1, 10):
-        places.append(Place(name=f'A{i}', enable=True))
-        places.append(Place(name=f'C{i}', enable=True))
+    movies_ids = [
+        d.get('id')
+        for d in movie_repository.peliculas_populares()
+    ]
 
-    time_15 = time(hour=15)
-    time_18 = time(hour=18)
-    time_21 = time(hour=21)
+    seats = [
+        Seat(id=i, enable=True)
+        for i in range(1, 10)
+    ]
+
+    t_1 = time(hour=12)
+    t_2 = time(hour=17)
+    t_3 = time(hour=20)
+    t_4 = time(hour=23)
+
+    timetables = []
+
+    i = 0
+    dia = date(year=2020, month=12, day=1)
+    while i < len(movies_ids):
+
+        id_1 = movies_ids[i]
+        id_2 = movies_ids[i+1] if i+1 < len(movies_ids) else None
+
+        timetables.extend([
+            Timetable(movie_id=id_1, movie_date=dia,
+                      movie_time=t_1, seats=seats, price=500, room=1),
+            Timetable(movie_id=id_1, movie_date=dia,
+                      movie_time=t_3, seats=seats, price=550, room=1),
+
+            Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
+                      movie_time=t_1, seats=seats, price=500, room=1),
+            Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
+                      movie_time=t_3, seats=seats, price=550, room=1),
+        ])
+
+        if id_2:
+            timetables.extend([
+                Timetable(movie_id=id_2, movie_date=dia,
+                          movie_time=t_2, seats=seats, price=550, room=1),
+                Timetable(movie_id=id_2, movie_date=dia,
+                          movie_time=t_4, seats=seats, price=500, room=1),
+
+                Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
+                          movie_time=t_2, seats=seats, price=550, room=1),
+                Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
+                          movie_time=t_4, seats=seats, price=500, room=1)
+            ])
+
+        i += 2
+        dia += timedelta(days=1)
 
     return [
         Cinema(
@@ -30,45 +72,33 @@ def _cinemas_hard() -> List[Cinema]:
             description='Cines Multiplex lleva adelante la operación de este complejo que es el único que permanece en la peatonal Lavalle donde supieron funcionar, en las épocas de gloria, más de 28 salas de cine.',
             adress='Lavalle 780, C1047 AAP, Buenos Aires',
             stars=4.1,
-            location=Location(latitude=-34.6010370224385,
-                              longitude=-58.39010170379639),
+            location=Location(latitude=-34.60245,
+                              longitude=-58.377785),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/monumental.jpg',
-            timetables=[
-                Timetable(movie_time=time_15, places=places, price=500),
-                Timetable(movie_time=time_18, places=places, price=550),
-                Timetable(movie_time=time_21, places=places, price=520)
-            ],
-            id=uuid4()
+            timetables=timetables,
+            id=UUID("7f55a7f0-10a8-48f2-a4fa-49cc48d0589c")
         ),
         Cinema(
             name='Gaumont',
             description='El Cine Gaumont es una sala cinematográfica que se encuentra frente a la Plaza Congreso, en la ciudad de Buenos Aires. Desde el año 2003 funciona en él el Espacio INCAA Km. 0. El cine fue fundado en 1912 con el nombre de Cinematógrafo de la Plaza del Congreso, pero a los pocos años ya se llamaba Gaumont Theatre, en referencia a Leon Gaumont.',
             adress='Av. Rivadavia 1635, C1033 CABA',
             stars=4.6,
-            location=Location(latitude=-34.6334636,
-                              longitude=-58.4682372),
+            location=Location(latitude=-34.6089591,
+                              longitude=-58.3896579),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/gaumont.jpg',
-            timetables=[
-                Timetable(movie_time=time_15, places=places, price=550),
-                Timetable(movie_time=time_18, places=places, price=600),
-                Timetable(movie_time=time_21, places=places, price=570)
-            ],
-            id=uuid4()
+            timetables=timetables,
+            id=UUID("0c5d04cd-5582-4113-bfe1-e17fc39dbceb")
         ),
         Cinema(
             name='Hoyts Abasto',
             description='Cinemark Hoyts es una cadena de cines de argentina. Cuenta con complejos ubicados en todo el país',
             adress='Av. Corrientes 3247, C1193AAE CABA',
             stars=4.3,
-            location=Location(latitude=-34.6010370224385,
-                              longitude=-58.39010170379639),
+            location=Location(latitude=-34.6032898,
+                              longitude=-58.4108409),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/hoyts.jpg',
-            timetables=[
-                Timetable(movie_time=time_15, places=places, price=560),
-                Timetable(movie_time=time_18, places=places, price=620),
-                Timetable(movie_time=time_21, places=places, price=530)
-            ],
-            id=uuid4()
+            timetables=timetables,
+            id=UUID("6ac18d0f-5581-4024-a0ca-e26ca435e66a")
         )
     ]
 

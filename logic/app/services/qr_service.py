@@ -1,6 +1,6 @@
 import os
 from typing import List
-from uuid import uuid4
+from uuid import uuid4, UUID
 
 import qrcode
 from logic.app.configs import config
@@ -8,11 +8,11 @@ from logic.app.models.qr import Qr
 from logic.app.repositories import qr_repository
 
 
-def crear_qr() -> Qr:
+def crear_qr(id: UUID) -> Qr:
     """
     crea un qr
     """
-    qr = Qr()
+    qr = Qr(id=id)
 
     imagen = qrcode.make(str(qr.id))
     imagen.save(qr.imagen_ruta)
@@ -22,7 +22,7 @@ def crear_qr() -> Qr:
     return qr
 
 
-def buscar_qr(id: uuid4) -> Qr:
+def buscar_qr(id: UUID) -> Qr:
     """
     busca un qr
     """
@@ -36,7 +36,7 @@ def todos_los_qr() -> List[Qr]:
     return qr_repository.todos_los_qr()
 
 
-def borrar_qr(id: uuid4) -> Qr:
+def borrar_qr(id: UUID) -> Qr:
     """
     borra el qr si existe
     """
