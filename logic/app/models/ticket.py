@@ -12,7 +12,7 @@ class TicketIn(object):
     id_movie: int
     id_cinema: UUID
     movie_time: time
-    places: List[str]
+    seats: List[str]
     discounts: List[UUID]
     credit_card_number: str
 
@@ -25,7 +25,7 @@ class TicketIn(object):
             'id_movie': self.id_movie,
             'id_cinema': str(self.id_cinema),
             'movie_time': self.movie_time.isoformat(),
-            'places': self.places,
+            'seats': self.seats,
             'discounts': [str(d) for d in self.discounts],
             'credit_card_number': self.credit_card_number
         }
@@ -43,7 +43,7 @@ class TicketIn(object):
             id_movie=int(d['id_movie']),
             id_cinema=UUID(d['id_cinema']),
             movie_time=movie_time,
-            places=d['places'],
+            seats=d['seats'],
             discounts=[UUID(u) for u in d.get('discounts', [])],
             credit_card_number=d['credit_card_number']
         )
@@ -81,7 +81,7 @@ class CinemaTicket(object):
     name: str
     adress: str
     movie_time: time
-    places: List[str]
+    seats: List[str]
 
     def __eq__(self, other):
         return self.id_cinema == other.id_cinema
@@ -92,7 +92,7 @@ class CinemaTicket(object):
             'name': self.name,
             'adress': self.adress,
             'movie_time': self.movie_time.isoformat(),
-            'places': self.places,
+            'seats': self.seats,
         }
 
     @staticmethod
@@ -106,7 +106,7 @@ class CinemaTicket(object):
             name=d['name'],
             adress=d['adress'],
             movie_time=movie_time,
-            places=d['places']
+            seats=d['seats']
         )
 
 

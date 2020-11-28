@@ -3,7 +3,7 @@ from io import BytesIO
 from uuid import UUID, uuid4
 
 from flask import Blueprint, jsonify, render_template, request, send_file
-from logic.app.models.cinema import CinemaFilters, Location, Place
+from logic.app.models.cinema import TimeTablesFilters, Location, Seat
 from logic.app.routes.api.v1.mappers import cinema_mapper
 from logic.app.services import cinema_service
 
@@ -33,7 +33,7 @@ def buscar_cinema(id: str):
 @blue_print.route('/closest/latitude/<latitude>/longitude/<longitude>', methods=['GET'])
 def todos_los_cinema_mas_cercano(latitude: str, longitude: str):
 
-    filters = CinemaFilters.from_json(request.args)
+    filters = TimeTablesFilters.from_json(request.args)
 
     location = Location(longitude=float(longitude), latitude=float(latitude))
 
@@ -77,7 +77,7 @@ def buscar_cinema_imgagen(id: str):
 @blue_print.route('/<id>/timetables', methods=['GET'])
 def buscar_cinema_timetables(id: str):
 
-    filters = CinemaFilters.from_json(request.args)
+    filters = TimeTablesFilters.from_json(request.args)
 
     cinema = cinema_service.buscar_cinema(UUID(id))
     if cinema is None:
@@ -86,10 +86,10 @@ def buscar_cinema_timetables(id: str):
     return jsonify([t.to_json() for t in cinema.timetables_por_filters(filters)]), 200
 
 
-@blue_print.route('/<id>/timetables/dates', methods=['GET'])
-def buscar_cinema_timetables_dates(id: str):
+@blue_print.route('/<id>/dates', methods=['GET'])
+def buscar_cinema_dates(id: str):
 
-    filters = CinemaFilters.from_json(request.args)
+    filters = TimeTablesFilters.from_json(request.args)
 
     cinema = cinema_service.buscar_cinema(UUID(id))
     if cinema is None:
@@ -100,13 +100,13 @@ def buscar_cinema_timetables_dates(id: str):
         for tt in cinema.timetables_por_filters(filters)
     ]
 
-    return jsonify(dates), 200
+    return jsonify(set(dates)), 200
 
 
-@blue_print.route('/<id>/timetables/times', methods=['GET'])
-def buscar_cinema_timetables_times(id: str):
+@blue_print.route('/<id>/times', methods=['GET'])
+def buscar_cinema_times(id: str):
 
-    filters = CinemaFilters.from_json(request.args)
+    filters = TimeTablesFilters.from_json(request.args)
 
     cinema = cinema_service.buscar_cinema(UUID(id))
     if cinema is None:
@@ -117,42 +117,44 @@ def buscar_cinema_timetables_times(id: str):
         for tt in cinema.timetables_por_filters(filters)
     ]
 
-    return jsonify(times), 200
+    return jsonify(set(times)), 200
 
 
-@blue_print.route('/<id>/timetables/<movie_time>/places', methods=['GET'])
-def buscar_cinema_places(id: str, movie_time: str):
+@blue_print.route('/<id>/rooms', methods=['GET'])
+def buscar_cinema_rooms(id: str):
 
-    cinemas = cinema_service.buscar_cinema(UUID(id))
-    if cinemas is None:
+    filters = TimeTablesFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
         return '', 204
 
-    places = []
-    for t in cinemas.timetables:
-        if t.movie_time == time.fromisoformat(movie_time):
-            places = t.places
+    list_room = [
+        tt.room
+        for tt in cinema.timetables_por_filters(filters)
+    ]
 
-    if not places:
+    return jsonify(set(list_room)), 200
+
+
+@blue_print.route('/<id>/seats/enables/ids', methods=['GET'])
+def buscar_cinema_timetables_seats_enables(id: str):
+
+    filters = TimeTablesFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
         return '', 204
 
-    result = [r.to_json() for r in places]
-    return jsonify(result), 200
+    list_seats = [
+        tt.seats
+        for tt in cinema.timetables_por_filters(filters)
+        if filter(lambda e: e.enable, tt.seats)
+    ]
 
+    ids = [
+        s.id
+        for s in sum(list_seats, [])
+    ]
 
-@blue_print.route('/<id>/timetables/<movie_time>/places/enables', methods=['GET'])
-def buscar_cinema_places_enables(id: str, movie_time: str):
-
-    cinemas = cinema_service.buscar_cinema(UUID(id))
-    if cinemas is None:
-        return '', 204
-
-    places = []
-    for t in cinemas.timetables:
-        if t.movie_time == time.fromisoformat(movie_time):
-            places = t.places
-
-    if not places:
-        return '', 204
-
-    result = [r.to_json().pop('name') for r in places if r.enable]
-    return jsonify(result), 200
+    return jsonify(ids), 200

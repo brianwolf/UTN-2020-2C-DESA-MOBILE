@@ -5,7 +5,7 @@ from typing import List
 from uuid import UUID, uuid4
 
 from logic.app.configs import config
-from logic.app.models.cinema import Cinema, Location, Place, Timetable
+from logic.app.models.cinema import Cinema, Location, Seat, Timetable
 from logic.app.repositories import movie_repository
 
 _DIRECOTRIO_JSON: str = f'{config.DIRECTORIO_DB}/cinema.json'
@@ -19,8 +19,8 @@ def _cinemas_hard() -> List[Cinema]:
         for d in movie_repository.peliculas_populares()
     ]
 
-    places = [
-        Place(id=i, enable=True)
+    seats = [
+        Seat(id=i, enable=True)
         for i in range(1, 10)
     ]
 
@@ -40,27 +40,27 @@ def _cinemas_hard() -> List[Cinema]:
 
         timetables.extend([
             Timetable(movie_id=id_1, movie_date=dia,
-                      movie_time=t_1, places=places, price=500),
+                      movie_time=t_1, seats=seats, price=500, room=1),
             Timetable(movie_id=id_1, movie_date=dia,
-                      movie_time=t_3, places=places, price=550),
+                      movie_time=t_3, seats=seats, price=550, room=1),
 
             Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
-                      movie_time=t_1, places=places, price=500),
+                      movie_time=t_1, seats=seats, price=500, room=1),
             Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
-                      movie_time=t_3, places=places, price=550),
+                      movie_time=t_3, seats=seats, price=550, room=1),
         ])
 
         if id_2:
             timetables.extend([
                 Timetable(movie_id=id_2, movie_date=dia,
-                          movie_time=t_2, places=places, price=550),
+                          movie_time=t_2, seats=seats, price=550, room=1),
                 Timetable(movie_id=id_2, movie_date=dia,
-                          movie_time=t_4, places=places, price=500),
+                          movie_time=t_4, seats=seats, price=500, room=1),
 
                 Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
-                          movie_time=t_2, places=places, price=550),
+                          movie_time=t_2, seats=seats, price=550, room=1),
                 Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
-                          movie_time=t_4, places=places, price=500)
+                          movie_time=t_4, seats=seats, price=500, room=1)
             ])
 
         i += 2

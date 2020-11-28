@@ -24,7 +24,7 @@ class Location(object):
 
 
 @dataclass
-class Place(object):
+class Seat(object):
     id: int = None
     enable: bool = True
 
@@ -35,11 +35,11 @@ class Place(object):
         return self.__dict__.copy()
 
     @staticmethod
-    def from_json(d: dict) -> 'Place':
+    def from_json(d: dict) -> 'Seat':
 
         id = int(d.get('id')) if 'id' in d else None
 
-        return Place(
+        return Seat(
             id=id,
             enable=bool(d.get('enable', True))
         )
@@ -50,7 +50,8 @@ class Timetable(object):
     movie_id: int
     movie_date: date
     movie_time: time
-    places: List[Place]
+    room: int
+    seats: List[Seat]
     price: float = 0
 
     def __eq__(self, other):
@@ -61,8 +62,9 @@ class Timetable(object):
             'movie_id': self.movie_id,
             'movie_date': self.movie_date.isoformat(),
             'movie_time': self.movie_time.isoformat(),
-            'places': [o.to_json() for o in self.places],
-            'price': str(self.price)
+            'seats': [o.to_json() for o in self.seats],
+            'price': str(self.price),
+            'room': self.room
         }
 
     @staticmethod
@@ -78,14 +80,15 @@ class Timetable(object):
             movie_id=d.get('movie_id'),
             movie_date=movie_date,
             movie_time=movie_time,
-            places=[Place.from_json(d) for d in d.get('places')],
-            price=float(d.get('price', 0))
+            seats=[Seat.from_json(d) for d in d.get('seats')],
+            price=float(d.get('price', 0)),
+            room=int(d.get('room', 0))
         )
 
     def ocupar_place(self, place_name: str):
 
         butacas_elegidas = list(
-            filter(lambda p: p.name == place_name, self.places))
+            filter(lambda p: p.name == place_name, self.seats))
 
         butacas_elegidas_ocupadas = [
             p for p in butacas_elegidas
@@ -100,26 +103,38 @@ class Timetable(object):
 
 
 @dataclass
-class CinemaFilters(object):
+class TimeTablesFilters(object):
     movie_id: int = None
     movie_date: date = None
+    movie_time: date = None
+    room: int = None
 
     def to_json(self) -> dict:
         return {
             'movie_id': self.movie_id,
-            'movie_date': self.movie_date.isoformat if self.movie_date else None
+            'movie_date': self.movie_date.isoformat if self.movie_date else None,
+            'movie_time': self.movie_time.isoformat if self.movie_time else None,
+            'room': self.room if self.room else None,
         }
 
     @staticmethod
-    def from_json(d: dict) -> 'CinemaFilters':
+    def from_json(d: dict) -> 'TimeTablesFilters':
 
         movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
+
         movie_date = date.fromisoformat(
             d.get('movie_date')) if 'movie_date' in d else None
 
-        return CinemaFilters(
+        movie_time = time.fromisoformat(
+            d.get('movie_time')) if 'movie_time' in d else None
+
+        room = int(d.get('room')) if 'room' in d else None
+
+        return TimeTablesFilters(
             movie_id=movie_id,
-            movie_date=movie_date
+            movie_date=movie_date,
+            movie_time=movie_time,
+            room=room
         )
 
 
@@ -169,7 +184,7 @@ class Cinema(object):
         with open(self.image_path, 'rb') as archivo:
             return archivo.read()
 
-    def timetables_por_filters(self, filters: CinemaFilters = CinemaFilters()) -> List[Timetable]:
+    def timetables_por_filters(self, filters: TimeTablesFilters = TimeTablesFilters()) -> List[Timetable]:
 
         resultado = self.timetables
 
@@ -180,5 +195,13 @@ class Cinema(object):
         if filters.movie_date:
             resultado = filter(lambda tt: tt.movie_date ==
                                filters.movie_date, resultado)
+
+        if filters.movie_time:
+            resultado = filter(lambda tt: tt.movie_time ==
+                               filters.movie_time, resultado)
+
+        if filters.room:
+            resultado = filter(lambda tt: tt.room ==
+                               filters.room, resultado)
 
         return resultado

@@ -67,15 +67,15 @@ def comprar_ticket(ticket_in: TicketIn) -> Ticket:
         raise AppException(
             codigo=CinemaErrors.CINE_NO_ENCONTRADO, mensaje=msj)
 
-    cinema_service.ocupar_places(
-        cinema.id, ticket_in.movie_time, ticket_in.places)
+    cinema_service.ocupar_seats(
+        cinema.id, ticket_in.movie_time, ticket_in.seats)
 
     cinema_ticket = CinemaTicket(
         id_cinema=cinema.id,
         name=cinema.name,
         adress=cinema.adress,
         movie_time=ticket_in.movie_time,
-        places=ticket_in.places
+        seats=ticket_in.seats
     )
 
     user = user_service.buscar_user(ticket_in.id_user)
@@ -136,7 +136,7 @@ def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts:
             codigo=CinemaErrors.HORARIO_NO_ENCONTRADO, mensaje=msj)
 
     precio_butaca = horario.price
-    cantidad_butacas = len(ticket_in.places)
+    cantidad_butacas = len(ticket_in.seats)
 
     precio_base = precio_butaca * cantidad_butacas
 
