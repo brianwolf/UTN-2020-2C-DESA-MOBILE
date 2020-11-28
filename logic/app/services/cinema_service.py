@@ -4,7 +4,7 @@ from datetime import time
 from typing import List
 from uuid import UUID, uuid4
 
-from logic.app.models.cinema import Cinema, Location
+from logic.app.models.cinema import Cinema, CinemaFilters, Location
 from logic.app.repositories import cinema_repository
 
 
@@ -12,28 +12,32 @@ def guardar_cinema(cinema: Cinema) -> UUID:
     return cinema_repository.guardar_cinema(cinema)
 
 
-def todos_los_cinema(movie_id=None) -> List[Cinema]:
+def todos_los_cinema_por_filtros(filters: CinemaFilters = CinemaFilters()) -> List[Cinema]:
 
     cines = cinema_repository.todos_los_cinema()
 
-    if movie_id:
+    if filters.movie_id:
 
-        def estrena_esa_peli(tt): return tt.movie_id == movie_id
+        def estrena_esa_peli(tt): return tt.movie_id == filters.movie_id
         def cine_tiene_peli(c): return filter(estrena_esa_peli, c.timetables)
 
         cines = filter(cine_tiene_peli, cines)
 
+    return cines
+
+
+def todos_los_cinema() -> List[Cinema]:
     return cinema_repository.todos_los_cinema()
 
 
-def todos_los_cinema_mas_cercano(location: Location, movie_id=None) -> List[Cinema]:
+def todos_los_cinema_mas_cercano(location: Location, filters: CinemaFilters = CinemaFilters()) -> List[Cinema]:
 
     def ordenamiento(c: Cinema):
         x = location.longitude - c.location.longitude
         y = location.latitude - c.location.latitude
         return math.sqrt((x**2 + y**2))
 
-    return sorted(cinema_repository.todos_los_cinema(), key=ordenamiento)
+    return sorted(todos_los_cinema_por_filtros(filters=filters), key=ordenamiento)
 
 
 def borrar_cinema(id: UUID) -> Cinema:
@@ -44,7 +48,7 @@ def buscar_cinema(id: UUID) -> Cinema:
     return cinema_repository.buscar_cinema(id)
 
 
-def ocupar_places(id_cinema: UUID, movie_time: time, places_name: List[str]):
+def ocupar_places(id_cinema: UUID, movie_time: time, places_name: List[int]):
     cinema = buscar_cinema(id_cinema)
     time_table = cinema.buscar_time_table(movie_time)
 

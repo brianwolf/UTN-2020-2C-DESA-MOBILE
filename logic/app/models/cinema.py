@@ -25,7 +25,7 @@ class Location(object):
 
 @dataclass
 class Place(object):
-    name: str
+    id: int = None
     enable: bool = True
 
     def __eq__(self, other):
@@ -36,8 +36,11 @@ class Place(object):
 
     @staticmethod
     def from_json(d: dict) -> 'Place':
+
+        id = int(d.get('id')) if 'id' in d else None
+
         return Place(
-            name=d.get('name'),
+            id=id,
             enable=bool(d.get('enable', True))
         )
 
@@ -68,7 +71,7 @@ class Timetable(object):
         movie_time = time.fromisoformat(
             d.get('movie_time')) if 'movie_time' in d else datetime.now().time()
 
-        movie_date = time.fromisoformat(
+        movie_date = date.fromisoformat(
             d.get('movie_date')) if 'movie_date' in d else datetime.now().date()
 
         return Timetable(
@@ -98,13 +101,13 @@ class Timetable(object):
 
 @dataclass
 class Cinema(object):
-    name: str
-    adress: str
-    description: str
-    stars: float
-    location: Location
-    image_path: str
-    timetables: List[Timetable]
+    name: str = None
+    adress: str = None
+    description: str = None
+    stars: float = None
+    location: Location = None
+    image_path: str = None
+    timetables: List[Timetable] = None
     id: UUID = field(default_factory=uuid4)
 
     def __eq__(self, other):
@@ -146,3 +149,22 @@ class Cinema(object):
         resultado = list(filter(lambda tt: tt.movie_time ==
                                 movie_time, self.timetables))
         return resultado[0] if resultado else None
+
+
+@dataclass
+class CinemaFilters(object):
+    movie_id: int = None
+
+    def to_json(self) -> dict:
+        return {
+            'movie_id': self.movie_id
+        }
+
+    @staticmethod
+    def from_json(d: dict) -> 'CinemaFilters':
+
+        movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
+
+        return Cinema(
+            movie_id=movie_id
+        )
