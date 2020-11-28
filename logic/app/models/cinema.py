@@ -102,19 +102,24 @@ class Timetable(object):
 @dataclass
 class CinemaFilters(object):
     movie_id: int = None
+    movie_date: date = None
 
     def to_json(self) -> dict:
         return {
-            'movie_id': self.movie_id
+            'movie_id': self.movie_id,
+            'movie_date': self.movie_date.isoformat if self.movie_date else None
         }
 
     @staticmethod
     def from_json(d: dict) -> 'CinemaFilters':
 
         movie_id = int(d.get('movie_id')) if 'movie_id' in d else None
+        movie_date = date.fromisoformat(
+            d.get('movie_date')) if 'movie_date' in d else None
 
         return CinemaFilters(
-            movie_id=movie_id
+            movie_id=movie_id,
+            movie_date=movie_date
         )
 
 
@@ -171,5 +176,9 @@ class Cinema(object):
         if filters.movie_id:
             resultado = filter(lambda tt: tt.movie_id ==
                                filters.movie_id, resultado)
+
+        if filters.movie_date:
+            resultado = filter(lambda tt: tt.movie_date ==
+                               filters.movie_date, resultado)
 
         return resultado

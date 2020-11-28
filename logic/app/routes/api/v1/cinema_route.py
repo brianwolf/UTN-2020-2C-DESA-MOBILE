@@ -87,7 +87,7 @@ def buscar_cinema_timetables(id: str):
 
 
 @blue_print.route('/<id>/timetables/dates', methods=['GET'])
-def buscar_cinema_dates(id: str):
+def buscar_cinema_timetables_dates(id: str):
 
     filters = CinemaFilters.from_json(request.args)
 
@@ -101,6 +101,23 @@ def buscar_cinema_dates(id: str):
     ]
 
     return jsonify(dates), 200
+
+
+@blue_print.route('/<id>/timetables/times', methods=['GET'])
+def buscar_cinema_timetables_times(id: str):
+
+    filters = CinemaFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
+        return '', 204
+
+    times = [
+        str(tt.movie_time)
+        for tt in cinema.timetables_por_filters(filters)
+    ]
+
+    return jsonify(times), 200
 
 
 @blue_print.route('/<id>/timetables/<movie_time>/places', methods=['GET'])
