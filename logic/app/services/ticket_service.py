@@ -134,7 +134,7 @@ def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts:
         raise AppException(
             codigo=CinemaErrors.HORARIO_NO_ENCONTRADO, mensaje=msj)
 
-    precio_butaca = horario.price
+    precio_butaca = cinema.price
     cantidad_butacas = len(ticket_in.seats)
 
     precio_base = precio_butaca * cantidad_butacas

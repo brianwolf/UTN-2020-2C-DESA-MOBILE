@@ -148,6 +148,7 @@ class Cinema(object):
     image_path: str = None
     timetables: List[Timetable] = None
     id: UUID = field(default_factory=uuid4)
+    price: float = None
 
     def __eq__(self, other):
         return self.id == other.id
@@ -161,7 +162,8 @@ class Cinema(object):
             'location': self.location.to_json(),
             'image_path': self.image_path,
             'timetables': [o.to_json() for o in self.timetables],
-            'id': str(self.id)
+            'id': str(self.id),
+            'price': str(self.price)
         }
 
     @staticmethod
@@ -177,7 +179,8 @@ class Cinema(object):
             location=Location.from_json(d.get('location')),
             image_path=d.get('image_path'),
             timetables=[Timetable.from_json(d) for d in d.get('timetables')],
-            id=id
+            id=id,
+            price=float(d.get('price')) if 'price' in d else None
         )
 
     def cargar_contenido(self) -> bytes:
