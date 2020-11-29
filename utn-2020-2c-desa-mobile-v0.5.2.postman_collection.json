@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
-		"name": "utn-2020-2c-desa-mobile-v0.5.1",
+		"name": "utn-2020-2c-desa-mobile-v0.5.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -549,7 +549,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{url}}/api/v1/cinemas/7f55a7f0-10a8-48f2-a4fa-49cc48d0589c/timetables/rooms?movie_id=622855&movie_date=2020-12-06&movie_time=23:00:00&room",
+											"raw": "{{url}}/api/v1/cinemas/7f55a7f0-10a8-48f2-a4fa-49cc48d0589c/timetables/seats?movie_id=622855&movie_date=2020-12-06&movie_time=23:00:00&room=1",
 											"host": [
 												"{{url}}"
 											],
@@ -559,7 +559,7 @@
 												"cinemas",
 												"7f55a7f0-10a8-48f2-a4fa-49cc48d0589c",
 												"timetables",
-												"rooms"
+												"seats"
 											],
 											"query": [
 												{
@@ -576,7 +576,7 @@
 												},
 												{
 													"key": "room",
-													"value": null
+													"value": "1"
 												}
 											]
 										}
@@ -1140,27 +1140,27 @@
 	],
 	"variable": [
 		{
-			"id": "4d601c59-7783-4f77-99e8-14276f1e162a",
+			"id": "76d862fa-698b-4ec0-8220-4833a4702631",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "7e20bd72-6983-4787-b882-d6e077169a1c",
+			"id": "f433b728-2e82-493d-a523-f2a48b25497c",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "5feeb6ec-15e8-4280-b769-2a757a4802d5",
+			"id": "22065e08-f615-43bb-83ab-1c0fa2af8953",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		},
 		{
-			"id": "dcdddfc4-9236-4100-8ca1-49348a0ab84a",
+			"id": "3639d51e-98b3-4228-a580-84af31200b16",
 			"key": "id_descuento_100_pe",
 			"value": ""
 		},
 		{
-			"id": "3b1730f6-3031-4994-b27d-4ee76df78a72",
+			"id": "e964c55b-8344-4348-8322-4c3287b4a1bf",
 			"key": "id_descuento_10_por",
 			"value": ""
 		}

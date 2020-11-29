@@ -86,6 +86,22 @@ def buscar_cinema_timetables(id: str):
     return jsonify([t.to_json() for t in cinema.timetables_por_filters(filters)]), 200
 
 
+@blue_print.route('/<id>/timetables/seats', methods=['GET'])
+def buscar_cinema_timetables_seats(id: str):
+
+    filters = TimeTablesFilters.from_json(request.args)
+
+    cinema = cinema_service.buscar_cinema(UUID(id))
+    if cinema is None:
+        return '', 204
+
+    seats = [
+        t.seats
+        for t in cinema.timetables_por_filters(filters)]
+
+    return jsonify(seats), 200
+
+
 @blue_print.route('/<id>/dates', methods=['GET'])
 def buscar_cinema_dates(id: str):
 

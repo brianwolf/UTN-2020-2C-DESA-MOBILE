@@ -40,27 +40,27 @@ def _cinemas_hard() -> List[Cinema]:
 
         timetables.extend([
             Timetable(movie_id=id_1, movie_date=dia,
-                      movie_time=t_1, seats=seats, price=500, room=1),
+                      movie_time=t_1, seats=seats, price=600, room=1),
             Timetable(movie_id=id_1, movie_date=dia,
-                      movie_time=t_3, seats=seats, price=550, room=1),
+                      movie_time=t_3, seats=seats, price=600, room=1),
 
             Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
-                      movie_time=t_1, seats=seats, price=500, room=1),
+                      movie_time=t_1, seats=seats, price=600, room=1),
             Timetable(movie_id=id_1, movie_date=dia + timedelta(days=7),
-                      movie_time=t_3, seats=seats, price=550, room=1),
+                      movie_time=t_3, seats=seats, price=600, room=1),
         ])
 
         if id_2:
             timetables.extend([
                 Timetable(movie_id=id_2, movie_date=dia,
-                          movie_time=t_2, seats=seats, price=550, room=1),
+                          movie_time=t_2, seats=seats, price=600, room=1),
                 Timetable(movie_id=id_2, movie_date=dia,
-                          movie_time=t_4, seats=seats, price=500, room=1),
+                          movie_time=t_4, seats=seats, price=600, room=1),
 
                 Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
-                          movie_time=t_2, seats=seats, price=550, room=1),
+                          movie_time=t_2, seats=seats, price=600, room=1),
                 Timetable(movie_id=id_2, movie_date=dia + timedelta(days=7),
-                          movie_time=t_4, seats=seats, price=500, room=1)
+                          movie_time=t_4, seats=seats, price=600, room=1)
             ])
 
         i += 2
@@ -76,7 +76,8 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.377785),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/monumental.jpg',
             timetables=timetables,
-            id=UUID("7f55a7f0-10a8-48f2-a4fa-49cc48d0589c")
+            id=UUID("7f55a7f0-10a8-48f2-a4fa-49cc48d0589c"),
+            price=600
         ),
         Cinema(
             name='Gaumont',
@@ -87,7 +88,8 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.3896579),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/gaumont.jpg',
             timetables=timetables,
-            id=UUID("0c5d04cd-5582-4113-bfe1-e17fc39dbceb")
+            id=UUID("0c5d04cd-5582-4113-bfe1-e17fc39dbceb"),
+            price=500
         ),
         Cinema(
             name='Hoyts Abasto',
@@ -98,7 +100,8 @@ def _cinemas_hard() -> List[Cinema]:
                               longitude=-58.4108409),
             image_path=f'{config.DIRECTORIO_IMG_CINEMA}/hoyts.jpg',
             timetables=timetables,
-            id=UUID("6ac18d0f-5581-4024-a0ca-e26ca435e66a")
+            id=UUID("6ac18d0f-5581-4024-a0ca-e26ca435e66a"),
+            price=550
         )
     ]
 
