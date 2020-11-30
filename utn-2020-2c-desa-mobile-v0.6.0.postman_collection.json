@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a5030277-ea0b-4bf6-bef8-47d8bef0ecd3",
-		"name": "utn-2020-2c-desa-mobile-v0.5.2",
+		"name": "utn-2020-2c-desa-mobile-v0.6.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -854,6 +854,42 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "calcular precio con descuentos",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"movie_id\": 622855,\n    \"cinema_id\": \"7f55a7f0-10a8-48f2-a4fa-49cc48d0589c\",\n    \"movie_date\": \"2020-12-06\",\n    \"movie_time\": \"23:00:00\",\n    \"room\": 1,\n    \"seats\": [\n        1,\n        2,\n        3\n    ],\n    \"credit_card_number\": \"1234-1234-1234-1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/tickets/price/byToken?token={{token}}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"tickets",
+												"price",
+												"byToken"
+											],
+											"query": [
+												{
+													"key": "token",
+													"value": "{{token}}"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							],
 							"protocolProfileBehavior": {},
@@ -1140,27 +1176,27 @@
 	],
 	"variable": [
 		{
-			"id": "76d862fa-698b-4ec0-8220-4833a4702631",
+			"id": "6e9398ad-1f28-476c-a3bb-cc0475d68e14",
 			"key": "url",
 			"value": "http://localhost:5000"
 		},
 		{
-			"id": "f433b728-2e82-493d-a523-f2a48b25497c",
+			"id": "c3ca49d8-f41c-4904-bb71-4fbe3fb8d272",
 			"key": "token",
 			"value": ""
 		},
 		{
-			"id": "22065e08-f615-43bb-83ab-1c0fa2af8953",
+			"id": "e51652f9-ae9a-4805-9b96-ae1685bb5ad9",
 			"key": "id_descuento_ejemplo",
 			"value": ""
 		},
 		{
-			"id": "3639d51e-98b3-4228-a580-84af31200b16",
+			"id": "32de0f87-1d99-41d0-a2cd-0e9d9cd54c81",
 			"key": "id_descuento_100_pe",
 			"value": ""
 		},
 		{
-			"id": "e964c55b-8344-4348-8322-4c3287b4a1bf",
+			"id": "ef91864a-cbf7-45e2-87a1-51def6bc0d4f",
 			"key": "id_descuento_10_por",
 			"value": ""
 		}
