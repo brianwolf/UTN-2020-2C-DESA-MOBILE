@@ -43,6 +43,21 @@ def tickets_del_user():
     return jsonify([ticket_mapper.ticket_to_json(o) for o in tickets]), 200
 
 
+@blue_print.route('/price/byToken', methods=['POST'])
+def calcular_precio_compra():
+
+    user = _user_logueado()
+    if not user:
+        return 'Usuario no logueado', 403
+
+    ticket = TicketIn.from_json(request.json)
+    ticket.user_id = user.id
+    ticket.discounts = [du.id for du in user.discounts]
+
+    precio = ticket_service.calcular_precio_final(ticket)
+    return jsonify(price=precio), 200
+
+
 @blue_print.route('/byToken', methods=['POST'])
 def comprar_ticket():
 
@@ -52,6 +67,7 @@ def comprar_ticket():
 
     ticket = TicketIn.from_json(request.json)
     ticket.user_id = user.id
+    ticket.discounts = [du.id for du in user.discounts]
 
     id_ticket = ticket_service.comprar_ticket(ticket)
     return jsonify(id=id_ticket), 201

@@ -118,8 +118,8 @@ def calcular_precio_final(ticket_in: TicketIn, cinema: Cinema = None, discounts:
 
     if not discounts:
         discounts = [
-            discount_service.buscar_discount(d.id)
-            for d in ticket_in.discounts
+            discount_service.buscar_discount(d_id)
+            for d_id in ticket_in.discounts
         ]
 
     filters = TimeTablesFilters(movie_id=ticket_in.movie_id,
